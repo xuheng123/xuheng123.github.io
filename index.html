@@ -80,13 +80,7 @@
                                      navigator.mozGetUserMedia ||
                                      navigator.msGetUserMedia ||
                                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-                navigator.mediaDevices.getUserMedia({
-
-                    'audio':false,
-
-                    'video':{ 'facingMode': "user" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }
-
-                });
+                
                 navigator.getMedia({
                     video: true,  // 摄像头
                     audio: false  // 音频
