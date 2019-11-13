@@ -81,6 +81,31 @@
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 180, 200);
 
+                  // model
+                var loader = new THREE.FBXLoader();
+                loader.load( 'models/fbx/Samba Dancing.fbx', function ( object ) {
+
+                    mixer = new THREE.AnimationMixer( object );
+
+                    var action = mixer.clipAction( object.animations[ 0 ] );
+                    action.play();
+
+                    object.traverse( function ( child ) {
+
+                        if ( child.isMesh ) {
+
+                            child.castShadow = true;
+                            child.receiveShadow = true;
+
+                        }
+
+                    } );
+                    object.scale.set(0.5,0.5,0.5);
+                    object.position.set(0,-40,0);
+                    scene.add( object );
+
+                }, onProgress, onError );
+
                 var video = document.getElementById('video');
                 var vendorUrl = window.URL || window.webkitURL;
                 var texture;
@@ -119,30 +144,7 @@
                 mesh.position.set(0,0,-100);
                 scene.add(mesh);
 
-                // model
-                var loader = new THREE.FBXLoader();
-                loader.load( 'models/fbx/Samba Dancing.fbx', function ( object ) {
-
-                    mixer = new THREE.AnimationMixer( object );
-
-                    var action = mixer.clipAction( object.animations[ 0 ] );
-                    action.play();
-
-                    object.traverse( function ( child ) {
-
-                        if ( child.isMesh ) {
-
-                            child.castShadow = true;
-                            child.receiveShadow = true;
-
-                        }
-
-                    } );
-                    object.scale.set(0.5,0.5,0.5);
-                    object.position.set(0,-40,0);
-                    scene.add( object );
-
-                }, onProgress, onError );
+              
               
             }
 
