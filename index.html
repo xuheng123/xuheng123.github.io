@@ -127,7 +127,7 @@ if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
 
                 })
 
-                .then(function(mediaStream) {try {
+                .then(function(strem) {try {
                       video.srcObject = strem;
                     } catch (error) {
                       video.src = URL.createObjectURL(strem);
