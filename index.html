@@ -24,6 +24,7 @@
             var mixer;
             var clock = new THREE.Clock();
             var renderer;
+            var progressBarDiv;
             function initThree() {
                 width = document.getElementById('canvas-frame').clientWidth;
                 height = document.getElementById('canvas-frame').clientHeight;
@@ -32,6 +33,16 @@
                 renderer.setSize(width, height);
                 document.getElementById('canvas-frame').appendChild(renderer.domElement);
                 renderer.setClearColor(0xFFFFFF, 1.0);
+
+                progressBarDiv = document.createElement( 'div' );
+                progressBarDiv.innerText = "Loading...";
+                progressBarDiv.style.fontSize = "3em";
+                progressBarDiv.style.color = "#888";
+                progressBarDiv.style.display = "block";
+                progressBarDiv.style.position = "absolute";
+                progressBarDiv.style.top = "50%";
+                progressBarDiv.style.width = "100%";
+                progressBarDiv.style.textAlign = "center";
             }
 
             var camera;
@@ -80,11 +91,10 @@
                                      navigator.mozGetUserMedia ||
                                      navigator.msGetUserMedia ||
                                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-                
+
                 navigator.getMedia({
                     video: true,  // 摄像头
                     audio: false  // 音频
-                    'video':{ 'facingMode': "user" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }
                 }, function(strem){
                     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
                     try {
@@ -153,6 +163,11 @@
                 var message = "Error loading model";
                 progressBarDiv.innerText = message;
                 console.log( message );
+
+            }
+            function updateProgressBar( fraction ) {
+
+                progressBarDiv.innerText = 'Loading... ' + Math.round( fraction * 100, 2 ) + '%';
 
             }
 
