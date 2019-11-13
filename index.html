@@ -38,7 +38,7 @@
                 progressBarDiv.innerText = "Loading...";
                 progressBarDiv.style.fontSize = "3em";
                 progressBarDiv.style.color = "#888";
-                progressBarDiv.style.display = "display";
+                progressBarDiv.style.display = "block";
                 progressBarDiv.style.position = "absolute";
                 progressBarDiv.style.top = "50%";
                 progressBarDiv.style.width = "100%";
@@ -80,7 +80,7 @@
             function initObject() {
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 180, 200);
-
+                showProgressBar();
                   // model
                 var loader = new THREE.FBXLoader();
                 loader.load( 'models/fbx/Samba Dancing.fbx', function ( object ) {
@@ -172,10 +172,15 @@
                 progressBarDiv.innerText = 'Loading... ' + Math.round( fraction * 100, 2 ) + '%';
 
             }
+            function showProgressBar() {
+
+                document.body.appendChild( progressBarDiv );
+
+            }
 
             function threeStart() {
-                initObject();
                 initThree();
+                initObject();
                 initCamera();
                 initLight();
                 animation();
