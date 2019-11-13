@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Three框架</title>
+        <title>AR展示系统</title>
         <script src="build/three.js"></script>
         <script src="js/libs/inflate.min.js"></script>
         <script src="js/loaders/FBXLoader.js"></script>
@@ -68,7 +68,7 @@
 
             function initObject() {
                 scene = new THREE.Scene();
-                geometry = new THREE.PlaneGeometry( 400, 320);
+                geometry = new THREE.PlaneGeometry( 300, 500);
 
                 var video = document.getElementById('video');
                 var vendorUrl = window.URL || window.webkitURL;
