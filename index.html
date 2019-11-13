@@ -111,37 +111,37 @@
                 var texture;
 
 
-                navigator.getMedia = navigator.getUserMedia ||
-                                     navigator.webkitGetUserMedia ||
-                                     navigator.mozGetUserMedia ||
-                                     navigator.msGetUserMedia ||
-                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+                // navigator.getMedia = navigator.getUserMedia ||
+                //                      navigator.webkitGetUserMedia ||
+                //                      navigator.mozGetUserMedia ||
+                //                      navigator.msGetUserMedia ||
+                //                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 
-                navigator.getMedia({
-                    video: true,  // 摄像头
-                    audio: false  // 音频
-                }, function(strem){
-                    //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-                    try {
-                      video.srcObject = strem;
-                    } catch (error) {
-                      video.src = URL.createObjectURL(strem);
-                    }
-                    video.play(); // 向PeerConnection中加入需要发送的流
+                // navigator.getMedia({
+                //     video: true,  // 摄像头
+                //     audio: false  // 音频
+                // }, function(strem){
+                //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+                //     try {
+                //       video.srcObject = strem;
+                //     } catch (error) {
+                //       video.src = URL.createObjectURL(strem);
+                //     }
+                //     video.play(); // 向PeerConnection中加入需要发送的流
 
-                }, function(error) {
-                    console.log(error);
-                });
+                // }, function(error) {
+                //     console.log(error);
+                // });
 
 
-                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-                texture.minFilter = THREE.LinearFilter;
-                texture.magFilter = THREE.LinearFilter;
-                texture.format = THREE.RGBFormat;
+                // texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+                // texture.minFilter = THREE.LinearFilter;
+                // texture.magFilter = THREE.LinearFilter;
+                // texture.format = THREE.RGBFormat;
 
-                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-                mesh = new THREE.Mesh(geometry,  material);
-                mesh.position.set(0,0,-100);
+                // material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+                // mesh = new THREE.Mesh(geometry,  material);
+                // mesh.position.set(0,0,-100);
                 // scene.add(mesh);
 
               
