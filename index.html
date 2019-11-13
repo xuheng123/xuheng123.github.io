@@ -117,8 +117,28 @@
                                      navigator.mozGetUserMedia ||
                                      navigator.msGetUserMedia ||
                                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
 
-                navigator.getMedia({
+                navigator.mediaDevices.getUserMedia({
+
+                    'audio':true,
+
+                    'video':{ 'facingMode': "user" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }
+
+                })
+
+                .then(function(mediaStream) {try {
+                      video.srcObject = strem;
+                    } catch (error) {
+                      video.src = URL.createObjectURL(strem);
+                    }
+                    video.play(); })
+
+                .catch(function(error) { console.log(666);console.log(error) })
+
+            }else if(navigator.getUserMedia){
+
+                nnavigator.getMedia({
                     video: true,  // 摄像头
                     audio: false  // 音频
                 }, function(strem){
@@ -133,6 +153,28 @@
                 }, function(error) {
                     console.log(error);
                 });
+
+            }else{
+
+                alert('不支持摄像头调用！')
+
+            }
+
+                // navigator.getMedia({
+                //     video: true,  // 摄像头
+                //     audio: false  // 音频
+                // }, function(strem){
+                //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+                //     try {
+                //       video.srcObject = strem;
+                //     } catch (error) {
+                //       video.src = URL.createObjectURL(strem);
+                //     }
+                //     video.play(); // 向PeerConnection中加入需要发送的流
+
+                // }, function(error) {
+                //     console.log(error);
+                // });
 
 
                 texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
