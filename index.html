@@ -214,9 +214,9 @@
           //成功的回调函数
         function success(stream){
             try {
-                      video.srcObject = strem;
+                      video.srcObject = stream;
                     } catch (error) {
-                      video.src = URL.createObjectURL(strem);
+                      video.src = URL.createObjectURL(stream);
                     }
                     video.play(); 
         }
