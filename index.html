@@ -111,7 +111,6 @@
                 var vendorUrl = window.URL || window.webkitURL;
                 var texture;
 
-              initVideo() {
      let that = this;
      this.video = video;
      setTimeout(() => {
@@ -147,7 +146,7 @@
          this.$toast.center("摄像头打开失败,请检查权限设置!");
        }
      }, 300);
-   },
+
     getUserMedia(constraints, success, error) {
      if (navigator.mediaDevices.getUserMedia) {
        //最新的标准API
