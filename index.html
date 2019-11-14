@@ -111,53 +111,56 @@
                 var vendorUrl = window.URL || window.webkitURL;
                 var texture;
 
+             initVideo(video);
+            //     navigator.getMedia = navigator.getUserMedia ||
+            //                          navigator.webkitGetUserMedia ||
+            //                          navigator.mozGetUserMedia ||
+            //                          navigator.msGetUserMedia ||
+            //                          (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+            // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+            //     navigator.mediaDevices.getUserMedia({
 
-                navigator.getMedia = navigator.getUserMedia ||
-                                     navigator.webkitGetUserMedia ||
-                                     navigator.mozGetUserMedia ||
-                                     navigator.msGetUserMedia ||
-                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-            if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
-                navigator.mediaDevices.getUserMedia({
+            //         'audio':false,
 
-                    'audio':true,
+            //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                    'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+            //     })
 
-                })
+            //     .then(function(strem) {try {
+            //           video.srcObject = strem;
+            //         } catch (error) {
+            //           video.src = URL.createObjectURL(strem);
+            //         }
+            //         video.play(); })
 
-                .then(function(strem) {try {
-                      video.srcObject = strem;
-                    } catch (error) {
-                      video.src = URL.createObjectURL(strem);
-                    }
-                    video.play(); })
+            //     .catch(function(error) { console.log(666);console.log(error) })
 
-                .catch(function(error) { console.log(666);console.log(error) })
+            // }
+            // else if(navigator.getUserMedia){
 
-            }else if(navigator.getUserMedia){
+            //     nnavigator.getMedia({
+            //         video: true,  // 摄像头
+            //         audio: false  // 音频
+            //     }, function(strem){
+            //         //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+            //         try {
+            //           video.srcObject = strem;
+            //         } catch (error) {
+            //           video.src = URL.createObjectURL(strem);
+            //         }
+            //         video.play(); // 向PeerConnection中加入需要发送的流
 
-                nnavigator.getMedia({
-                    video: true,  // 摄像头
-                    audio: false  // 音频
-                }, function(strem){
-                    //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-                    try {
-                      video.srcObject = strem;
-                    } catch (error) {
-                      video.src = URL.createObjectURL(strem);
-                    }
-                    video.play(); // 向PeerConnection中加入需要发送的流
+            //     }, function(error) {
+            //         console.log(error);
+            //     });
 
-                }, function(error) {
-                    console.log(error);
-                });
+            // }
+            // else{
 
-            }else{
+            //     alert('不支持摄像头调用！')
 
-                alert('不支持摄像头调用！')
-
-            }
+            // }
+            
 
                 // navigator.getMedia({
                 //     video: true,  // 摄像头
@@ -184,6 +187,71 @@
                 mesh.position.set(0,0,-100);
                 scene.add(mesh);
             }
+
+            initVideo(video) {
+     let that = this;
+     this.video = video;
+     setTimeout(() => {
+       if (
+         navigator.mediaDevices.getUserMedia ||
+         navigator.getUserMedia ||
+         navigator.webkitGetUserMedia ||
+         navigator.mozGetUserMedia
+       ) {
+         //调用用户媒体设备, 访问摄像头
+         this.getUserMedia(
+           {
+             video: {
+               width: {
+                 ideal: that.videoWidth,
+                 max: that.videoWidth
+               },
+               height: {
+                 ideal: that.videoHeight,
+                 max: that.videoHeight
+               },
+               facingMode: "user",    //前置摄像头
+               frameRate: {
+                 ideal: 30,
+                 min: 10
+               }
+             }
+           },
+           this.videoSuccess,
+           this.videoError
+         );
+       } else {
+         this.$toast.center("摄像头打开失败,请检查权限设置!");
+       }
+     }, 300);
+   },
+    getUserMedia(constraints, success, error) {
+     if (navigator.mediaDevices.getUserMedia) {
+       //最新的标准API
+       navigator.mediaDevices
+         .getUserMedia(constraints)
+         .then(success)
+         .catch(error);
+     } else if (navigator.webkitGetUserMedia) {
+       //webkit核心浏览器
+       navigator.webkitGetUserMedia(constraints, success, error);
+     } else if (navigator.mozGetUserMedia) {
+       //firfox浏览器
+       navigator.mozGetUserMedia(constraints, success, error);
+     } else if (navigator.getUserMedia) {
+       //旧版API
+       navigator.getUserMedia(constraints, success, error);
+     }
+   },
+   videoSuccess(stream) {
+     this.mediaStreamTrack = stream;
+     this.video.srcObject = stream;
+     this.video.play();
+   },
+   videoError(error) {
+     console.error(error);
+     this.$toast.center("摄像头打开失败,请检查权限设置!");
+   },
 
             function onProgress( xhr ) {
 
