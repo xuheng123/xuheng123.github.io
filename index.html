@@ -84,12 +84,12 @@
                 showProgressBar();
                   // model
                 var loader = new THREE.FBXLoader();
-                loader.load( 'models/fbx/11111.fbx', function ( object ) {
+                loader.load( 'models/fbx/hexie1115_all/hexie1115_all.fbx', function ( object ) {
 
-                    mixer = new THREE.AnimationMixer( object );
+                    // mixer = new THREE.AnimationMixer( object );
 
-                    var action = mixer.clipAction( object.animations[ 0 ] );
-                    action.play();
+                    // var action = mixer.clipAction( object.animations[ 0 ] );
+                    // action.play();
 
                     object.traverse( function ( child ) {
 
@@ -272,7 +272,7 @@
                 requestAnimationFrame(animation);
                 var delta = clock.getDelta();
 
-                if ( mixer ) mixer.update( delta );
+                // if ( mixer ) mixer.update( delta );
 
                  renderer.render( scene, camera );
             }
