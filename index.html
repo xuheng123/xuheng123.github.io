@@ -87,10 +87,10 @@
                 loader.load( 'models/fbx/ball2.fbx', function ( object ) {
 
                     mixer = new THREE.AnimationMixer( object );
-                    if (object.animations.length>0) {
-                    var action = mixer.clipAction( object.animations[ 0 ] );
-                    action.play();
-                    }
+                    // if (object.animations.length>0) {
+                    // var action = mixer.clipAction( object.animations[ 0 ] );
+                    // action.play();
+                    // }
                    
 
                     object.traverse( function ( child ) {
@@ -272,9 +272,9 @@
 
             function animation() {
                 requestAnimationFrame(animation);
-                var delta = clock.getDelta();
+                // var delta = clock.getDelta();
 
-                 if ( mixer ) mixer.update( delta );
+                //  if ( mixer ) mixer.update( delta );
 
                  renderer.render( scene, camera );
             }
