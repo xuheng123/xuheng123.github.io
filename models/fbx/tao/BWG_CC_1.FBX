@@ -30,14 +30,14 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2014"
 			P: "Original|DateTime_GMT", "DateTime", "", "", "10/07/2018 00:26:21.121"
-			P: "Original|FileName", "KString", "", "", "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.FBX"
+			P: "Original|FileName", "KString", "", "", "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
@@ -478,7 +478,7 @@ Objects:  {
 			P: "SpecularColor", "Color", "", "A",0.899999976158142,0.899999976158142,0.899999976158142
 			P: "SpecularFactor", "Number", "", "A",0
 			P: "ShininessExponent", "Number", "", "A",2
-			P: "启用", "Bool", "", "AU",0
+			P: "鍚敤", "Bool", "", "AU",0
 			P: "Emissive", "Vector3D", "Vector", "",0.392156898975372,0.392156898975372,0.392156898975372
 			P: "Ambient", "Vector3D", "Vector", "",0.587999999523163,0.587999999523163,0.587999999523163
 			P: "Diffuse", "Vector3D", "Vector", "",0.587999999523163,0.587999999523163,0.587999999523163
@@ -491,19 +491,19 @@ Objects:  {
 	Video: 971178688, "Video::BWG_CC_1", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+		Filename: "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		RelativeFilename: "BWG_CC_1.jpg"
 	}
-	Video: 971174096, "Video::贴图 #2", "Clip" {
+	Video: 971174096, "Video::璐村浘 #2", "Clip" {
 		Type: "Clip"
 		Properties70:  {
-			P: "Path", "KString", "XRefUrl", "", "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+			P: "Path", "KString", "XRefUrl", "", "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		}
 		UseMipMap: 0
-		Filename: "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+		Filename: "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		RelativeFilename: "BWG_CC_1.jpg"
 	}
 	Texture: 1885245952, "Texture::BWG_CC_1", "" {
@@ -515,23 +515,23 @@ Objects:  {
 			P: "UseMaterial", "bool", "", "",1
 		}
 		Media: "Video::BWG_CC_1"
-		FileName: "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+		FileName: "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		RelativeFilename: "BWG_CC_1.jpg"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
 		Texture_Alpha_Source: "None"
 		Cropping: 0,0,0,0
 	}
-	Texture: 1885246736, "Texture::贴图 #2", "" {
+	Texture: 1885246736, "Texture::璐村浘 #2", "" {
 		Type: "TextureVideoClip"
 		Version: 202
-		TextureName: "Texture::贴图 #2"
+		TextureName: "Texture::璐村浘 #2"
 		Properties70:  {
 			P: "UVSet", "KString", "", "", "UVChannel_1"
 			P: "UseMaterial", "bool", "", "",1
 		}
-		Media: "Video::贴图 #2"
-		FileName: "C:\Users\Administrator\Desktop\N132 博物馆历史文化非物质红色革命模型素材展厅展馆设计(1)\小件\瓷器导出\BWG_CC_1.jpg"
+		Media: "Video::璐村浘 #2"
+		FileName: "C:\Users\Administrator\Desktop\N132 鍗氱墿棣嗗巻鍙叉枃鍖栭潪鐗╄川绾㈣壊闈╁懡妯″瀷绱犳潗灞曞巺灞曢璁捐(1)\灏忎欢\鐡峰櫒瀵煎嚭\BWG_CC_1.jpg"
 		RelativeFilename: "BWG_CC_1.jpg"
 		ModelUVTranslation: 0,0
 		ModelUVScaling: 1,1
@@ -616,7 +616,7 @@ Objects:  {
 			a: 1
 		} 
 	}
-	CollectionExclusive: 1954347792, "DisplayLayer::Á¢Ãæ", "DisplayLayer" {
+	CollectionExclusive: 1954347792, "DisplayLayer::脕垄脙忙", "DisplayLayer" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.772549019607843,0.882352941176471,0.337254901960784
 		}
@@ -646,7 +646,7 @@ Connections:  {
 	;AnimCurveNode::R, Model::BWG_CC_1
 	C: "OP",1966136928,1645839776, "Lcl Rotation"
 	
-	;Texture::贴图 #2, Material::BWG_CC_1
+	;Texture::璐村浘 #2, Material::BWG_CC_1
 	C: "OP",1885246736,971172784, "EmissiveColor"
 	
 	;Texture::BWG_CC_1, Material::BWG_CC_1
@@ -655,7 +655,7 @@ Connections:  {
 	;Video::BWG_CC_1, Texture::BWG_CC_1
 	C: "OO",971178688,1885245952
 	
-	;Video::贴图 #2, Texture::贴图 #2
+	;Video::璐村浘 #2, Texture::璐村浘 #2
 	C: "OO",971174096,1885246736
 	
 	;AnimCurve::, AnimCurveNode::R
