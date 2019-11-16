@@ -127,7 +127,7 @@
                                      navigator.msGetUserMedia ||
                                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
             if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
-                alert('开始调用但为播放！')
+               
                 navigator.mediaDevices.getUserMedia({
 
                     'audio':false,
@@ -137,6 +137,7 @@
                 })
 
                 .then(function(strem) {
+                    alert('开始调用但为播放！')
                     try {
                       video.srcObject = strem;
                     } catch (error) {
