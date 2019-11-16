@@ -30,6 +30,7 @@
             var mouseX = 0;
             var mouseXOnMouseDown = 0;
             var targetObj;
+            var width,height;
             function initThree() {
                 width = document.getElementById('canvas-frame').clientWidth;
                 height = document.getElementById('canvas-frame').clientHeight;
@@ -205,8 +206,8 @@
             //     mesh = new THREE.Mesh(geometry,  material);
             //     mesh.position.set(0,0,-100);
             //     scene.add(mesh);
-            document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-            document.addEventListener("touchmove", onDocumentTouchMove, false);
+            document.addEventListener('touchstart', onDocumentTouchStart, false);
+            document.addEventListener('touchmove', onDocumentTouchMove, false);
             }
 
             //访问用户媒体设备的兼容方法
@@ -264,7 +265,7 @@
 
             }
             function onDocumentTouchMove(event) {
-                if (event.touches.length === 1) {
+                if (event.touches.length == 1) {
                     event.preventaDefault();
                     mouseX = event.touches[0].layerX - width/2;
                     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
