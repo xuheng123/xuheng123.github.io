@@ -242,7 +242,7 @@
         function onDocumentTouchStart( event ) {				
 				if ( event.touches.length == 1 ) {                   
                     event.preventDefault();
-                    mouseXOnMouseDown = event.touches[0].layerX - windowHalfX;
+                    mouseXOnMouseDown = event.touches[0].layerX - width/2;
                     targetRotationMouseDown = targetRotation;
                     var touch = new THREE.Vector2();
                         touch.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
@@ -266,7 +266,7 @@
             function onDocumentTouchMove(event) {
                 if (event.touches.length === 1) {
                     event.preventaDefault();
-                    mouseX = event.touches[0].layerX - windowHalfX;
+                    mouseX = event.touches[0].layerX - width/2;
                     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
                 }
            }
