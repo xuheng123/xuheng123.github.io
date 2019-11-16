@@ -111,11 +111,8 @@
                     } );
                     object.scale.set(0.8,0.8,0.8);
                     // object.position.set(0,-40,0);
-<<<<<<< HEAD
                     object.name = "train";
                     // targetObj = object;
-=======
->>>>>>> parent of f4e99a7... Update index.html
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
@@ -248,26 +245,9 @@
 				if ( event.touches.length == 1 ) {                   
                     event.preventDefault();
                     
-<<<<<<< HEAD
                     var mouse = new THREE.Vector2();
                     mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                     mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
-=======
-					event.preventDefault();
-
-					// onPointerDownPointerX = event.touches[ 0 ].pageX;
-					// onPointerDownPointerY = event.touches[ 0 ].pageY;
-
-					
-
-					// touchStartPoint.x = event.touches[0].clientX;
-					// touchStartPoint.y = event.touches[0].clientX;
-					// touchEndPoint.x = event.touches[0].clientX;
-                    // touchEndPoint.y = event.touches[0].clientX;
-                    var mouse = new THREE.Vector2();
-				mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-				mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
->>>>>>> parent of f4e99a7... Update index.html
                     var raycaster = new THREE.Raycaster();
 				raycaster.setFromCamera( mouse, camera );
 				var intersects = raycaster.intersectObjects( scene.children ,true);
