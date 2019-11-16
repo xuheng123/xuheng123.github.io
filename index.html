@@ -252,10 +252,12 @@
 				raycaster.setFromCamera( mouse, camera );
 				var intersects = raycaster.intersectObjects( scene.children ,true);
 
-				if ( intersects.length > 0 ) {
-                    alert('chumole')
+				if ( intersects.length > 0 ) {                   
                     
 						for (var i = 0; i <= intersects.length - 1; i++) {
+                            if(intersects[i].name=="train"){
+                                alert('点击到了火车')
+                            }
                         }
                     }
 
