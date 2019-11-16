@@ -112,7 +112,7 @@
                     object.scale.set(0.8,0.8,0.8);
                     // object.position.set(0,-40,0);
                     object.name = "train";
-                    targetObj = object;
+                    // targetObj = object;
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
@@ -330,7 +330,7 @@
                  if ( mixer ) mixer.update( delta );
 
                  renderer.render( scene, camera );
-                 targetObj.rotation.y += (targetRotation - targetObj.rotation.y) * 0.05;
+                //  targetObj.rotation.y += (targetRotation - targetObj.rotation.y) * 0.05;
             }
 
 
