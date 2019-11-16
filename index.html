@@ -251,7 +251,7 @@
 				mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
 				raycaster.setFromCamera( mouse, camera );
-				var intersects = raycaster.intersectObjects( group.children ,true);
+				var intersects = raycaster.intersectObjects( scene.children ,true);
 
 				if ( intersects.length > 0 ) {
                     alert('chumole')
