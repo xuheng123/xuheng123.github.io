@@ -105,6 +105,7 @@
                     } );
                     object.scale.set(0.5,0.5,0.5);
                     // object.position.set(0,-40,0);
+                    object.name = "train";
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
@@ -236,27 +237,19 @@
 				if ( event.touches.length == 1 ) {
                     
 					event.preventDefault();
-
-					// onPointerDownPointerX = event.touches[ 0 ].pageX;
-					// onPointerDownPointerY = event.touches[ 0 ].pageY;
-
-					
-
-					// touchStartPoint.x = event.touches[0].clientX;
-					// touchStartPoint.y = event.touches[0].clientX;
-					// touchEndPoint.x = event.touches[0].clientX;
-                    // touchEndPoint.y = event.touches[0].clientX;
-                    var mouse = new THREE.Vector2();
-				mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-				mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+                    var touch = new THREE.Vector2();
+                        touch.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+                        touch.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
-				raycaster.setFromCamera( mouse, camera );
+				raycaster.setFromCamera( touch, camera );
 				var intersects = raycaster.intersectObjects( scene.children ,true);
 
-				if ( intersects.length > 0 ) {
-                    alert('chumole')
+				if ( intersects.length > 0 ) {                   
                     
 						for (var i = 0; i <= intersects.length - 1; i++) {
+                            if(intersects[i].name == "train"){
+                                alert('点击到火车了')
+                            }
                         }
                     }
 
