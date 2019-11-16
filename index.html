@@ -135,12 +135,15 @@
 
                 })
 
-                .then(function(strem) {try {
+                .then(function(strem) {
+                    try {
                       video.srcObject = strem;
                     } catch (error) {
                       video.src = URL.createObjectURL(strem);
                     }
-                    video.play(); })
+                    video.play(); 
+                    alert('开始调用！')
+                })
 
                 .catch(function(error) { console.log(666);console.log(error) })
 
