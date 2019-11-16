@@ -208,6 +208,7 @@
             //     scene.add(mesh);
             document.addEventListener('touchstart', onDocumentTouchStart, false);
             document.addEventListener('touchmove', onDocumentTouchMove, false);
+            document.addEventListener( 'touchend', onDocumentTouchEnd, false );
             }
 
             //访问用户媒体设备的兼容方法
@@ -243,8 +244,6 @@
         function onDocumentTouchStart( event ) {				
 				if ( event.touches.length == 1 ) {                   
                     event.preventDefault();
-                    mouseXOnMouseDown = event.touches[0].layerX - width/2;
-                    targetRotationOnMouseDown = targetRotation;
                     var touch = new THREE.Vector2();
                         touch.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                         touch.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
@@ -264,6 +263,15 @@
 				}
 
             }
+            function onDocumentTouchEnd(event){		
+				
+				if ( event.touches.length == 1 ) {
+					 //按下去的时候鼠标相对位置
+                     mouseXOnMouseDown = event.layerX - windowHalfX;
+                    //鼠标按下的旋转角度
+                    targetRotationOnMouseDown = targetRotation;
+					}
+			}
             function onDocumentTouchMove(event) {
                 if (event.touches.length == 1) {
                     event.preventaDefault();
