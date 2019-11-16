@@ -25,6 +25,11 @@
             var clock = new THREE.Clock();
             var renderer;
             var progressBarDiv;
+            var targetRotation = 0;
+            var targetRotationOnMouseDown = 0;
+            var mouseX = 0;
+            var mouseXOnMouseDown = 0;
+            var targetObj;
             function initThree() {
                 width = document.getElementById('canvas-frame').clientWidth;
                 height = document.getElementById('canvas-frame').clientHeight;
@@ -106,6 +111,7 @@
                     object.scale.set(0.5,0.5,0.5);
                     // object.position.set(0,-40,0);
                     object.name = "train";
+                    targetObj = object;
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
@@ -200,6 +206,7 @@
             //     mesh.position.set(0,0,-100);
             //     scene.add(mesh);
             document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+            document.addEventListener("touchmove", onDocumentTouchMove, false);
             }
 
             //访问用户媒体设备的兼容方法
@@ -232,11 +239,11 @@
         function error(error){
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
-        function onDocumentTouchStart( event ) {
-				
-				if ( event.touches.length == 1 ) {
-                    
-					event.preventDefault();
+        function onDocumentTouchStart( event ) {				
+				if ( event.touches.length == 1 ) {                   
+                    event.preventDefault();
+                    mouseXOnMouseDown = event.touches[0].layerX - windowHalfX;
+                    targetRotationMouseDown = targetRotation;
                     var touch = new THREE.Vector2();
                         touch.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                         touch.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
@@ -255,7 +262,14 @@
 
 				}
 
-			}
+            }
+            function onDocumentTouchMove(event) {
+                if (event.touches.length === 1) {
+                    event.preventaDefault();
+                    mouseX = event.touches[0].layerX - windowHalfX;
+                    targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
+                }
+           }
             function onProgress( xhr ) {
 
                 if ( xhr.lengthComputable ) {
@@ -306,6 +320,7 @@
                  if ( mixer ) mixer.update( delta );
 
                  renderer.render( scene, camera );
+                 targetObj.rotation.y += (targetRotation - targetObj.rotation.y) * 0.05;
             }
 
 
