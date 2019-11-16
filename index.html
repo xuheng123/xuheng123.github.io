@@ -234,28 +234,27 @@
         function onDocumentTouchStart( event ) {
 				
 				if ( event.touches.length == 1 ) {
-                    alert('chumole')
+                    
 					event.preventDefault();
 
-					onPointerDownPointerX = event.touches[ 0 ].pageX;
-					onPointerDownPointerY = event.touches[ 0 ].pageY;
+					// onPointerDownPointerX = event.touches[ 0 ].pageX;
+					// onPointerDownPointerY = event.touches[ 0 ].pageY;
 
-					onPointerDownLon = 0;
-					onPointerDownLat = 0;
+					
 
 					// touchStartPoint.x = event.touches[0].clientX;
 					// touchStartPoint.y = event.touches[0].clientX;
 					// touchEndPoint.x = event.touches[0].clientX;
                     // touchEndPoint.y = event.touches[0].clientX;
                     var mouse = new THREE.Vector2();
-				mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-				mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+				mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+				mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
 				raycaster.setFromCamera( mouse, camera );
 				var intersects = raycaster.intersectObjects( group.children ,true);
 
 				if ( intersects.length > 0 ) {
-
+                    alert('chumole')
                     
 						for (var i = 0; i <= intersects.length - 1; i++) {
                         }
