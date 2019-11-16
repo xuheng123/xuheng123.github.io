@@ -244,7 +244,7 @@
 				if ( event.touches.length == 1 ) {                   
                     event.preventDefault();
                     mouseXOnMouseDown = event.touches[0].layerX - width/2;
-                    targetRotationMouseDown = targetRotation;
+                    targetRotationOnMouseDown = targetRotation;
                     var touch = new THREE.Vector2();
                         touch.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                         touch.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
