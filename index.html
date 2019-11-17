@@ -248,7 +248,7 @@
             for (var i = intersects.length - 1; i >= 0; i--) {
                 if(intersects[i].object.parent.name=="train"){
                 //    alert('点击到了火车')
-                action.play();
+                mixer.clipAction( intersects[i].object.animations[ 0 ] ).play();
                 }   
             }
         }
@@ -268,7 +268,7 @@
                 if(intersects[i].object.parent.name=="train"){
                 //    alert('点击到了火车')
                 if(action!=undefined){
-                    action.play();
+                    mixer.clipAction( intersects[i].object.animations[ 0 ] ).play();
                 }
                 }   
                 }
