@@ -19,7 +19,7 @@
 			#info {
 				color: #fff;
 				position: absolute;
-				height: 100%;
+				top: 10px;
 				width: 100%;
 				text-align: center;
 				z-index: 100;
@@ -166,23 +166,6 @@
                 alert('苹果暂不支持摄像头调用！')
 
             }
-            
-
-                // navigator.getMedia({
-                //     video: true,  // 摄像头
-                //     audio: false  // 音频
-                // }, function(strem){
-                //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-                //     try {
-                //       video.srcObject = strem;
-                //     } catch (error) {
-                //       video.src = URL.createObjectURL(strem);
-                //     }
-                //     video.play(); // 向PeerConnection中加入需要发送的流
-
-                // }, function(error) {
-                //     console.log(error);
-                // });
                 texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
                 texture.minFilter = THREE.LinearFilter;
                 texture.magFilter = THREE.LinearFilter;
@@ -367,12 +350,12 @@
     </head>
 
     <body onload="threeStart();">
-        <!-- <div id="canvas-frame"> -->
+        <div id="info">
             <!-- <div class="booth"> -->
                 <video id="video" width="0" height="0"></video>
                 <!-- <canvas id='canvas' width='400' height='300'></canvas> -->
             <!-- </div> -->
-        <!-- </div> -->
+        </div>
 
     </body>
 </html>
