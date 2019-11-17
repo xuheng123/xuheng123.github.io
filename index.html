@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <title>AR展示系统</title>
         <script src="build/three.js"></script>
         <script src="js/libs/inflate.min.js"></script>
@@ -19,14 +20,13 @@
                 position: absolute;
             }
         </style> -->
-        <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		
         <style>
 			body {
 				font-family: Monospace;
 				background-color: #000;
 				color: #fff;
-				margin: 0px;
+				margin: 10px;
 				overflow: hidden;
 			}
 			#info {
@@ -406,13 +406,7 @@
     </head>
 
     <body onload="threeStart();">
-        <div id="canvas-frame">
-            <div class="booth">
-                <video id="video" width="0" height="800"></video>
-                <!-- <canvas id='canvas' width='400' height='300'></canvas> -->
-            </div>
-        </div>
-
+        
     </body>
 </html>
 
