@@ -13,13 +13,13 @@
 				font-family: Monospace;
 				background-color: #000;
 				color: #fff;
-				/* margin: 10px; */
+				margin: 10px;
 				overflow: hidden;
 			}
 			#info {
 				color: #fff;
 				position: absolute;
-				top: 0px;
+				top: 10px;
 				width: 100%;
 				text-align: center;
 				z-index: 100;
@@ -130,14 +130,6 @@
                 var video = document.getElementById('video');
                 var vendorUrl = window.URL || window.webkitURL;
                 var texture;
-                 // if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia){
-                 //    //调用用户媒体设备，访问摄像头
-                 //    getUserMedia({
-                 //        video:{width:480,height:320}
-                 //    },success,error);
-                 //    } else {
-                 //        alert("你的浏览器不支持访问用户媒体设备");
-                 //    }
 
                 navigator.getMedia = navigator.getUserMedia ||
                                      navigator.webkitGetUserMedia ||
@@ -286,8 +278,7 @@
                     mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
 				raycaster.setFromCamera( mouse, camera );
-				var intersects = raycaster.intersectObjects( targetObj,true);
-
+				var intersects = raycaster.intersectObjects( scene.children,true);
 				if ( intersects.length > 0 ) {                    
                     for (var i = intersects.length - 1; i >= 0; i--) {
                 if(intersects[i].object.parent.name=="train"){
