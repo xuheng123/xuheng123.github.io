@@ -88,7 +88,7 @@
             var camera;
             function initCamera() {
                 camera = new THREE.PerspectiveCamera(45,  window.innerWidth / window.innerHeight, 1, 10000);
-                camera.position.set(0,0,140);
+                camera.position.set(0,40,140);
             }
 
             var scene;
@@ -144,7 +144,7 @@
 
                     } );
                     object.scale.set(0.8,0.8,0.8);
-                    //  object.position.set(0,0,0);
+                    object.position.set(0,40,0);
                     object.name = "train";
                      targetObj = object;
                     scene.add( object );
