@@ -39,6 +39,7 @@
             var controls;         
             var targetObj;
             var container;
+            var action;
             function initThree() {
                 container = document.createElement( 'div' );
 				document.body.appendChild( container );
@@ -104,7 +105,7 @@
 
                     mixer = new THREE.AnimationMixer( object );
                     for(var i = 0 ; i < object.animations.length; i++){           
-                         var action = mixer.clipAction( object.animations[ i ] );           
+                          action = mixer.clipAction( object.animations[ i ] );           
                           action.stop(); 
                           action.loop = 2200;                     
                         }
@@ -246,7 +247,8 @@
         if ( intersects.length > 1 ) {
             for (var i = intersects.length - 1; i >= 0; i--) {
                 if(intersects[i].object.parent.name=="train"){
-                   alert('点击到了火车')
+                //    alert('点击到了火车')
+                action.play();
                 }   
             }
         }
