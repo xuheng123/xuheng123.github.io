@@ -252,6 +252,7 @@
                 mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
                 action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
                 action.loop = 2200;
+                action.clampWhenFinished = true; 
                 action.play();            
                 }   
             }
@@ -275,6 +276,7 @@
                     mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
                     action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
                     action.loop = 2200;
+                    action.clampWhenFinished = true; 
                     action.play(); 
                 }
                 }   
