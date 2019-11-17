@@ -271,7 +271,10 @@
                 if(intersects[i].object.parent.name=="train"){
                 //    alert('点击到了火车')
                 if(action!=undefined){
-                    mixer.clipAction( intersects[i].object.parent.animations[ 0 ] ).play();
+                    mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
+                    action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
+                    action.loop = 2200;
+                    action.play(); 
                 }
                 }   
                 }
