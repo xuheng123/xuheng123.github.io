@@ -107,7 +107,8 @@
                     for(var i = 0 ; i < object.animations.length; i++){           
                           action = mixer.clipAction( object.animations[ i ] );           
                           action.stop(); 
-                          action.loop = 2200;                     
+                          action.loop = 2200;   
+                          action.clampWhenFinished = true;                  
                         }
                         mixer.clipAction( object.animations[ 0 ] ).play();
 
