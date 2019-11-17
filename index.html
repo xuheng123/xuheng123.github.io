@@ -119,97 +119,97 @@
                     hideProgressBar();
                 }, onProgress, onError );
 
-                var video = document.getElementById('video');
-                var vendorUrl = window.URL || window.webkitURL;
-                var texture;
-                 // if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia){
-                 //    //调用用户媒体设备，访问摄像头
-                 //    getUserMedia({
-                 //        video:{width:480,height:320}
-                 //    },success,error);
-                 //    } else {
-                 //        alert("你的浏览器不支持访问用户媒体设备");
-                 //    }
+            //     var video = document.getElementById('video');
+            //     var vendorUrl = window.URL || window.webkitURL;
+            //     var texture;
+            //      // if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia){
+            //      //    //调用用户媒体设备，访问摄像头
+            //      //    getUserMedia({
+            //      //        video:{width:480,height:320}
+            //      //    },success,error);
+            //      //    } else {
+            //      //        alert("你的浏览器不支持访问用户媒体设备");
+            //      //    }
 
-                navigator.getMedia = navigator.getUserMedia ||
-                                     navigator.webkitGetUserMedia ||
-                                     navigator.mozGetUserMedia ||
-                                     navigator.msGetUserMedia ||
-                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-            if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+            //     navigator.getMedia = navigator.getUserMedia ||
+            //                          navigator.webkitGetUserMedia ||
+            //                          navigator.mozGetUserMedia ||
+            //                          navigator.msGetUserMedia ||
+            //                          (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+            // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
                
-                navigator.mediaDevices.getUserMedia({
+            //     navigator.mediaDevices.getUserMedia({
 
-                    'audio':false,
+            //         'audio':false,
 
-                    'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+            //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                })
+            //     })
 
-                .then(function(strem) {
-                    try {
-                      video.srcObject = strem;
-                    } catch (error) {
-                      video.src = URL.createObjectURL(strem);
-                    }
-                    video.play();                   
-                })
-
-                .catch(function(error) { console.log(666);console.log(error) })
-
-            }
-            // else if(navigator.getUserMedia){
-
-            //     nnavigator.getMedia({
-            //         video: true,  // 摄像头
-            //         audio: false  // 音频
-            //     }, function(strem){
-            //         //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+            //     .then(function(strem) {
             //         try {
             //           video.srcObject = strem;
             //         } catch (error) {
             //           video.src = URL.createObjectURL(strem);
             //         }
-            //         video.play(); // 向PeerConnection中加入需要发送的流
+            //         video.play();                   
+            //     })
 
-            //     }, function(error) {
-            //         console.log(error);
-            //     });
+            //     .catch(function(error) { console.log(666);console.log(error) })
 
             // }
-            else{
+            // // else if(navigator.getUserMedia){
 
-                alert('不支持摄像头调用！')
+            // //     nnavigator.getMedia({
+            // //         video: true,  // 摄像头
+            // //         audio: false  // 音频
+            // //     }, function(strem){
+            // //         //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+            // //         try {
+            // //           video.srcObject = strem;
+            // //         } catch (error) {
+            // //           video.src = URL.createObjectURL(strem);
+            // //         }
+            // //         video.play(); // 向PeerConnection中加入需要发送的流
 
-            }
+            // //     }, function(error) {
+            // //         console.log(error);
+            // //     });
+
+            // // }
+            // else{
+
+            //     alert('不支持摄像头调用！')
+
+            // }
             
 
-                // navigator.getMedia({
-                //     video: true,  // 摄像头
-                //     audio: false  // 音频
-                // }, function(strem){
-                //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-                //     try {
-                //       video.srcObject = strem;
-                //     } catch (error) {
-                //       video.src = URL.createObjectURL(strem);
-                //     }
-                //     video.play(); // 向PeerConnection中加入需要发送的流
+            //     // navigator.getMedia({
+            //     //     video: true,  // 摄像头
+            //     //     audio: false  // 音频
+            //     // }, function(strem){
+            //     //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+            //     //     try {
+            //     //       video.srcObject = strem;
+            //     //     } catch (error) {
+            //     //       video.src = URL.createObjectURL(strem);
+            //     //     }
+            //     //     video.play(); // 向PeerConnection中加入需要发送的流
 
-                // }, function(error) {
-                //     console.log(error);
-                // });
-                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-                texture.minFilter = THREE.LinearFilter;
-                texture.magFilter = THREE.LinearFilter;
-                texture.format = THREE.RGBFormat;
+            //     // }, function(error) {
+            //     //     console.log(error);
+            //     // });
+            //     texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+            //     texture.minFilter = THREE.LinearFilter;
+            //     texture.magFilter = THREE.LinearFilter;
+            //     texture.format = THREE.RGBFormat;
 
-                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-                mesh = new THREE.Mesh(geometry,  material);
-                mesh.position.set(0,0,-240);
-                scene.add(camera);
-                camera.add(mesh);
-                // scene.add(mesh);
+            //     material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+            //     mesh = new THREE.Mesh(geometry,  material);
+            //     mesh.position.set(0,0,-240);
+            //     scene.add(camera);
+            //     camera.add(mesh);
+
             // Controls
             controls = new THREE.OrbitControls( camera, renderer.domElement );
             controls.minDistance = 2;
@@ -218,6 +218,7 @@
             document.addEventListener('touchstart', onDocumentTouchStart, false);
             document.addEventListener('touchmove', onDocumentTouchMove, false);
             document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+            document.addEventListener( 'mousedown', onDocumentMouseDown, false );
             }
 
             //访问用户媒体设备的兼容方法
@@ -250,6 +251,25 @@
         function error(error){
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
+        function onDocumentMouseMove( event ) {
+
+var mouse = new THREE.Vector2();
+mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+
+var raycaster = new THREE.Raycaster();
+raycaster.setFromCamera( mouse, camera );
+var intersects = raycaster.intersectObjects( group.children ,true);
+
+if ( intersects.length > 1 ) {
+    for (var i = intersects.length - 1; i >= 0; i--) {
+        if(intersects[i].object.name=="train"){
+                                alert('点击到了火车')
+                            }   
+    }
+}
+
+}
         function onDocumentTouchStart( event ) {				
 				if ( event.touches.length == 1 ) {                   
                     event.preventDefault();
