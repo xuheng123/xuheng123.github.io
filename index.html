@@ -42,8 +42,7 @@
 			}
 		</style>
         <script >
-            // import * as THREE from '../build/three.module.js';
-            // import { FBXLoader } from './jsm/loaders/FBXLoader.js';
+          
             var mixer;
             var clock = new THREE.Clock();
             var renderer;
@@ -87,7 +86,7 @@
 
             var camera;
             function initCamera() {
-                camera = new THREE.PerspectiveCamera(45,  window.innerWidth / window.innerHeight, 1, 10000);
+                camera = new THREE.PerspectiveCamera(45,   window.innerWidth / window.innerHeight, 1, 10000);
                 camera.position.set(0,-20,140);
             }
 
@@ -119,7 +118,7 @@
 
             function initObject() {
                 scene = new THREE.Scene();
-                geometry = new THREE.PlaneGeometry( 180, 400);
+                geometry = new THREE.PlaneGeometry( 180, 200);
                 updateProgressBar( 0 );
                 showProgressBar();
                   // model
@@ -384,8 +383,8 @@
             }
 
             function threeStart() {
-                initThree();
                 initCamera();
+                initThree();
                 initObject();                
                 initLight();
                 animation();
