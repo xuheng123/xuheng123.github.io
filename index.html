@@ -7,7 +7,7 @@
         <script src="js/libs/inflate.min.js"></script>
         <script src="js/loaders/FBXLoader.js"></script>
         <script src="js/controls/OrbitControls.js"></script>
-        <style type="text/css">
+        <!-- <style type="text/css">
             div#canvas-frame {
                 border: none;
                 /* cursor: pointer; */
@@ -18,7 +18,7 @@
             .booth {
                 position: absolute;
             }
-        </style>
+        </style> -->
         <script >
             // import * as THREE from '../build/three.module.js';
             // import { FBXLoader } from './jsm/loaders/FBXLoader.js';
@@ -33,14 +33,24 @@
             var mouseXOnMouseDown = 0;
             var targetObj;
             var width,height;
+            var container;
             function initThree() {
-                width = document.getElementById('canvas-frame').clientWidth;
-                height = document.getElementById('canvas-frame').clientHeight;
+                // width = document.getElementById('canvas-frame').clientWidth;
+                // height = document.getElementById('canvas-frame').clientHeight;
 
-                renderer = new THREE.WebGLRenderer({antialias : true});
-                renderer.setSize(width, height);
-                document.getElementById('canvas-frame').appendChild(renderer.domElement);
-                renderer.setClearColor(0xFFFFFF, 1.0);
+                // renderer = new THREE.WebGLRenderer({antialias : true});
+                // renderer.setSize(width, height);
+                // document.getElementById('canvas-frame').appendChild(renderer.domElement);
+                // renderer.setClearColor(0xFFFFFF, 1.0);
+                container = document.createElement( 'div' );
+				document.body.appendChild( container );
+                renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.shadowMap.enabled = true;
+				container.appendChild( renderer.domElement );
+
+                window.addEventListener( 'resize', onWindowResize, false );
 
                 progressBarDiv = document.createElement( 'div' );
                 progressBarDiv.innerText = "Loading...";
@@ -55,7 +65,7 @@
 
             var camera;
             function initCamera() {
-                camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+                camera = new THREE.PerspectiveCamera(45,  window.innerWidth / window.innerHeight, 1, 10000);
                 camera.position.set(0,0,140);
             }
 
@@ -114,101 +124,101 @@
                     object.scale.set(0.8,0.8,0.8);
                     // object.position.set(0,-40,0);
                     object.name = "train";
-                    // targetObj = object;
+                     targetObj = object;
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
 
-            //     var video = document.getElementById('video');
-            //     var vendorUrl = window.URL || window.webkitURL;
-            //     var texture;
-            //      // if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia){
-            //      //    //调用用户媒体设备，访问摄像头
-            //      //    getUserMedia({
-            //      //        video:{width:480,height:320}
-            //      //    },success,error);
-            //      //    } else {
-            //      //        alert("你的浏览器不支持访问用户媒体设备");
-            //      //    }
+                var video = document.getElementById('video');
+                var vendorUrl = window.URL || window.webkitURL;
+                var texture;
+                 // if (navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia){
+                 //    //调用用户媒体设备，访问摄像头
+                 //    getUserMedia({
+                 //        video:{width:480,height:320}
+                 //    },success,error);
+                 //    } else {
+                 //        alert("你的浏览器不支持访问用户媒体设备");
+                 //    }
 
-            //     navigator.getMedia = navigator.getUserMedia ||
-            //                          navigator.webkitGetUserMedia ||
-            //                          navigator.mozGetUserMedia ||
-            //                          navigator.msGetUserMedia ||
-            //                          (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-            // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+                navigator.getMedia = navigator.getUserMedia ||
+                                     navigator.webkitGetUserMedia ||
+                                     navigator.mozGetUserMedia ||
+                                     navigator.msGetUserMedia ||
+                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+            if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
                
-            //     navigator.mediaDevices.getUserMedia({
+                navigator.mediaDevices.getUserMedia({
 
-            //         'audio':false,
+                    'audio':false,
 
-            //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+                    'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-            //     })
+                })
 
-            //     .then(function(strem) {
+                .then(function(strem) {
+                    try {
+                      video.srcObject = strem;
+                    } catch (error) {
+                      video.src = URL.createObjectURL(strem);
+                    }
+                    video.play();                   
+                })
+
+                .catch(function(error) { console.log(666);console.log(error) })
+
+            }
+            // else if(navigator.getUserMedia){
+
+            //     nnavigator.getMedia({
+            //         video: true,  // 摄像头
+            //         audio: false  // 音频
+            //     }, function(strem){
+            //         //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
             //         try {
             //           video.srcObject = strem;
             //         } catch (error) {
             //           video.src = URL.createObjectURL(strem);
             //         }
-            //         video.play();                   
-            //     })
+            //         video.play(); // 向PeerConnection中加入需要发送的流
 
-            //     .catch(function(error) { console.log(666);console.log(error) })
-
-            // }
-            // // else if(navigator.getUserMedia){
-
-            // //     nnavigator.getMedia({
-            // //         video: true,  // 摄像头
-            // //         audio: false  // 音频
-            // //     }, function(strem){
-            // //         //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-            // //         try {
-            // //           video.srcObject = strem;
-            // //         } catch (error) {
-            // //           video.src = URL.createObjectURL(strem);
-            // //         }
-            // //         video.play(); // 向PeerConnection中加入需要发送的流
-
-            // //     }, function(error) {
-            // //         console.log(error);
-            // //     });
-
-            // // }
-            // else{
-
-            //     alert('不支持摄像头调用！')
+            //     }, function(error) {
+            //         console.log(error);
+            //     });
 
             // }
+            else{
+
+                alert('不支持摄像头调用！')
+
+            }
             
 
-            //     // navigator.getMedia({
-            //     //     video: true,  // 摄像头
-            //     //     audio: false  // 音频
-            //     // }, function(strem){
-            //     //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
-            //     //     try {
-            //     //       video.srcObject = strem;
-            //     //     } catch (error) {
-            //     //       video.src = URL.createObjectURL(strem);
-            //     //     }
-            //     //     video.play(); // 向PeerConnection中加入需要发送的流
+                // navigator.getMedia({
+                //     video: true,  // 摄像头
+                //     audio: false  // 音频
+                // }, function(strem){
+                //     //console.log(">>>>>>>>>>>"+strem); // 获取到视频流
+                //     try {
+                //       video.srcObject = strem;
+                //     } catch (error) {
+                //       video.src = URL.createObjectURL(strem);
+                //     }
+                //     video.play(); // 向PeerConnection中加入需要发送的流
 
-            //     // }, function(error) {
-            //     //     console.log(error);
-            //     // });
-            //     texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-            //     texture.minFilter = THREE.LinearFilter;
-            //     texture.magFilter = THREE.LinearFilter;
-            //     texture.format = THREE.RGBFormat;
+                // }, function(error) {
+                //     console.log(error);
+                // });
+                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+                texture.minFilter = THREE.LinearFilter;
+                texture.magFilter = THREE.LinearFilter;
+                texture.format = THREE.RGBFormat;
 
-            //     material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-            //     mesh = new THREE.Mesh(geometry,  material);
-            //     mesh.position.set(0,0,-240);
-            //     scene.add(camera);
-            //     camera.add(mesh);
+                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+                mesh = new THREE.Mesh(geometry,  material);
+                mesh.position.set(0,0,-240);
+                scene.add(camera);
+                camera.add(mesh);
 
             // Controls
             controls = new THREE.OrbitControls( camera, renderer.domElement );
@@ -251,35 +261,34 @@
         function error(error){
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
-        function onDocumentMouseMove( event ) {
+        function onDocumentMouseDown( event ) {
 
-var mouse = new THREE.Vector2();
-mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+        var mouse = new THREE.Vector2();
+        mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 
-var raycaster = new THREE.Raycaster();
-raycaster.setFromCamera( mouse, camera );
-var intersects = raycaster.intersectObjects( group.children ,true);
+        var raycaster = new THREE.Raycaster();
+        raycaster.setFromCamera( mouse, camera );
+        var intersects = raycaster.intersectObjects( scene.children ,true);
 
-if ( intersects.length > 1 ) {
-    for (var i = intersects.length - 1; i >= 0; i--) {
-        if(intersects[i].object.name=="train"){
-                                alert('点击到了火车')
-                            }   
-    }
-}
+        if ( intersects.length > 1 ) {
+            for (var i = intersects.length - 1; i >= 0; i--) {
+                if(intersects[i].object.parent.name=="train"){
+                   alert('点击到了火车')
+                }   
+            }
+        }
 
-}
+        }
         function onDocumentTouchStart( event ) {				
 				if ( event.touches.length == 1 ) {                   
-                    event.preventDefault();
-                    
+                    event.preventDefault();                   
                     var mouse = new THREE.Vector2();
                     mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                     mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
 				raycaster.setFromCamera( mouse, camera );
-				var intersects = raycaster.intersectObjects( scene.children ,true);
+				var intersects = raycaster.intersectObjects( targetObj,true);
 
 				if ( intersects.length > 0 ) {                   
                     
@@ -309,6 +318,12 @@ if ( intersects.length > 1 ) {
                 //     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
                 // }
            }
+           function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            // composer.setSize( window.innerWidth, window.innerHeight );
+            }
             function onProgress( xhr ) {
 
                 if ( xhr.lengthComputable ) {
@@ -359,7 +374,6 @@ if ( intersects.length > 1 ) {
                  if ( mixer ) mixer.update( delta );
 
                  renderer.render( scene, camera );
-                //  targetObj.rotation.y += (targetRotation - targetObj.rotation.y) * 0.05;
             }
 
 
