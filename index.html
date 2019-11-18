@@ -220,44 +220,44 @@
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
         function onClick( event ) {
-                   var x, y;
-        var mouse = new THREE.Vector2();
+        //            var x, y;
+        // var mouse = new THREE.Vector2();
 
-                    if ( event.changedTouches ) {
+        //             if ( event.changedTouches ) {
 
-                        x = event.changedTouches[ 0 ].pageX;
-                        y = event.changedTouches[ 0 ].pageY;
+        //                 x = event.changedTouches[ 0 ].pageX;
+        //                 y = event.changedTouches[ 0 ].pageY;
 
-                    } else {
+        //             } else {
 
-                        x = event.clientX;
-                        y = event.clientY;
+        //                 x = event.clientX;
+        //                 y = event.clientY;
 
-                    }
-alert('点击到了火车')
-                    mouse.x = ( x / window.innerWidth ) * 2 - 1;
-                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;              
-                    // var mouse = new THREE.Vector2();
-                    // mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-                    // mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
-                    var raycaster = new THREE.Raycaster();
-                raycaster.setFromCamera( mouse, camera );
-                var intersects = raycaster.intersectObjects( scene.children,true);
-                if ( intersects.length > 0 ) {                    
-                    for (var i = intersects.length - 1; i >= 0; i--) {
-                if(intersects[i].object.parent.name=="train"){
-                //    alert('点击到了火车')
-                if(action!=undefined){
-                    mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
-                    action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
-                    action.loop = 2200;
-                    action.clampWhenFinished = true; 
-                    action.play(); 
-                }
-                }   
-                }
+        //             }
+        //             alert('点击到了火车')
+        //             mouse.x = ( x / window.innerWidth ) * 2 - 1;
+        //             mouse.y = - ( y / window.innerHeight ) * 2 + 1;              
+        //             // var mouse = new THREE.Vector2();
+        //             // mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+        //             // mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+        //             var raycaster = new THREE.Raycaster();
+        //         raycaster.setFromCamera( mouse, camera );
+        //         var intersects = raycaster.intersectObjects( scene.children,true);
+        //         if ( intersects.length > 0 ) {                    
+        //             for (var i = intersects.length - 1; i >= 0; i--) {
+        //         if(intersects[i].object.parent.name=="train"){
+        //         //    alert('点击到了火车')
+        //         if(action!=undefined){
+        //             mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
+        //             action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
+        //             action.loop = 2200;
+        //             action.clampWhenFinished = true; 
+        //             action.play(); 
+        //         }
+        //         }   
+        //         }
 
-                }
+        //         }
 
         }
         function onDocumentMouseDown( event ) {
@@ -285,30 +285,30 @@ alert('点击到了火车')
 
         }
         function onDocumentTouchStart( event ) {				
-				// if ( event.touches.length == 1 ) {                   
-    //                 event.preventDefault();                   
-    //                 var mouse = new THREE.Vector2();
-    //                 mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-    //                 mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
-    //                 var raycaster = new THREE.Raycaster();
-				// raycaster.setFromCamera( mouse, camera );
-				// var intersects = raycaster.intersectObjects( scene.children,true);
-				// if ( intersects.length > 0 ) {                    
-    //                 for (var i = intersects.length - 1; i >= 0; i--) {
-    //             if(intersects[i].object.parent.name=="train"){
-    //             //    alert('点击到了火车')
-    //             if(action!=undefined){
-    //                 mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
-    //                 action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
-    //                 action.loop = 2200;
-    //                 action.clampWhenFinished = true; 
-    //                 action.play(); 
-    //             }
-    //             }   
-    //             }
-    //             }
+				if ( event.touches.length == 1 ) {                   
+                    event.preventDefault();                   
+                    var mouse = new THREE.Vector2();
+                    mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+                    mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+                    var raycaster = new THREE.Raycaster();
+				raycaster.setFromCamera( mouse, camera );
+				var intersects = raycaster.intersectObjects( scene.children,true);
+				if ( intersects.length > 0 ) {                    
+                    for (var i = intersects.length - 1; i >= 0; i--) {
+                if(intersects[i].object.parent.name=="train"){
+                //    alert('点击到了火车')
+                if(action!=undefined){
+                    mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
+                    action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
+                    action.loop = 2200;
+                    action.clampWhenFinished = true; 
+                    action.play(); 
+                }
+                }   
+                }
+                }
 
-				// }
+				}
 
             }
             function onDocumentTouchEnd(event){		
