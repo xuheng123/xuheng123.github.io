@@ -248,10 +248,26 @@
 
         }
         function onDocumentMouseDown( event ) {
-
+        var x, y;
         var mouse = new THREE.Vector2();
-        mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-        mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+
+                    if ( event.changedTouches ) {
+
+                        x = event.changedTouches[ 0 ].pageX;
+                        y = event.changedTouches[ 0 ].pageY;
+
+                    } else {
+
+                        x = event.clientX;
+                        y = event.clientY;
+
+                    }
+
+                    mouse.x = ( x / window.innerWidth ) * 2 - 1;
+                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;
+        
+        // mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+        // mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 
         var raycaster = new THREE.Raycaster();
         raycaster.setFromCamera( mouse, camera );
