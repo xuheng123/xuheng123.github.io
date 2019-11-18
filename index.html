@@ -139,33 +139,33 @@
                                      navigator.mozGetUserMedia ||
                                      navigator.msGetUserMedia ||
                                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-            if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
-               
-                navigator.mediaDevices.getUserMedia({
+                if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+                   
+                    navigator.mediaDevices.getUserMedia({
 
-                    'audio':false,
+                        'audio':false,
 
-                    'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+                        'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                })
+                    })
 
-                .then(function(strem) {
-                    try {
-                      video.srcObject = strem;
-                    } catch (error) {
-                      video.src = URL.createObjectURL(strem);
-                    }
-                    video.play();                   
-                })
+                    .then(function(strem) {
+                        try {
+                          video.srcObject = strem;
+                        } catch (error) {
+                          video.src = URL.createObjectURL(strem);
+                        }
+                        video.play();                   
+                    })
 
-                .catch(function(error) { console.log(666);console.log(error) })
+                    .catch(function(error) { console.log(666);console.log(error) })
 
-            }
-            else{
+                }
+                else{
 
-                alert('苹果暂不支持摄像头调用！')
+                    alert('苹果暂不支持摄像头调用！')
 
-            }
+                }
                 texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
                 texture.minFilter = THREE.LinearFilter;
                 texture.magFilter = THREE.LinearFilter;
@@ -182,6 +182,7 @@
             controls.minDistance = 2;
             controls.maxDistance = 200;				
             controls.update();
+            window.addEventListener( 'click', onClick );
             document.addEventListener('touchstart', onDocumentTouchStart, false);
             document.addEventListener('touchmove', onDocumentTouchMove, false);
             document.addEventListener( 'touchend', onDocumentTouchEnd, false );
@@ -218,6 +219,34 @@
         function error(error){
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
+        function onClick( event ) {
+
+                  if ( event.touches.length == 1 ) {                   
+                    event.preventDefault();                   
+                    var mouse = new THREE.Vector2();
+                    mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+                    mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+                    var raycaster = new THREE.Raycaster();
+                raycaster.setFromCamera( mouse, camera );
+                var intersects = raycaster.intersectObjects( scene.children,true);
+                if ( intersects.length > 0 ) {                    
+                    for (var i = intersects.length - 1; i >= 0; i--) {
+                if(intersects[i].object.parent.name=="train"){
+                //    alert('点击到了火车')
+                if(action!=undefined){
+                    mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
+                    action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
+                    action.loop = 2200;
+                    action.clampWhenFinished = true; 
+                    action.play(); 
+                }
+                }   
+                }
+                }
+
+                }
+
+        }
         function onDocumentMouseDown( event ) {
 
         var mouse = new THREE.Vector2();
@@ -243,30 +272,30 @@
 
         }
         function onDocumentTouchStart( event ) {				
-				if ( event.touches.length == 1 ) {                   
-                    event.preventDefault();                   
-                    var mouse = new THREE.Vector2();
-                    mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-                    mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
-                    var raycaster = new THREE.Raycaster();
-				raycaster.setFromCamera( mouse, camera );
-				var intersects = raycaster.intersectObjects( scene.children,true);
-				if ( intersects.length > 0 ) {                    
-                    for (var i = intersects.length - 1; i >= 0; i--) {
-                if(intersects[i].object.parent.name=="train"){
-                //    alert('点击到了火车')
-                if(action!=undefined){
-                    mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
-                    action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
-                    action.loop = 2200;
-                    action.clampWhenFinished = true; 
-                    action.play(); 
-                }
-                }   
-                }
-                }
+				// if ( event.touches.length == 1 ) {                   
+    //                 event.preventDefault();                   
+    //                 var mouse = new THREE.Vector2();
+    //                 mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+    //                 mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+    //                 var raycaster = new THREE.Raycaster();
+				// raycaster.setFromCamera( mouse, camera );
+				// var intersects = raycaster.intersectObjects( scene.children,true);
+				// if ( intersects.length > 0 ) {                    
+    //                 for (var i = intersects.length - 1; i >= 0; i--) {
+    //             if(intersects[i].object.parent.name=="train"){
+    //             //    alert('点击到了火车')
+    //             if(action!=undefined){
+    //                 mixer = new THREE.AnimationMixer( intersects[i].object.parent );             
+    //                 action =mixer.clipAction( intersects[i].object.parent.animations[ 0 ] );    
+    //                 action.loop = 2200;
+    //                 action.clampWhenFinished = true; 
+    //                 action.play(); 
+    //             }
+    //             }   
+    //             }
+    //             }
 
-				}
+				// }
 
             }
             function onDocumentTouchEnd(event){		
