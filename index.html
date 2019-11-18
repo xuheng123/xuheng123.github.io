@@ -234,11 +234,9 @@
                         y = event.clientY;
 
                     }
-
+alert('点击到了火车')
                     mouse.x = ( x / window.innerWidth ) * 2 - 1;
-                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;
-                  if ( event.touches.length == 1 ) {                   
-                    event.preventDefault();                   
+                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;              
                     // var mouse = new THREE.Vector2();
                     // mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
                     // mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
@@ -257,7 +255,6 @@
                     action.play(); 
                 }
                 }   
-                }
                 }
 
                 }
