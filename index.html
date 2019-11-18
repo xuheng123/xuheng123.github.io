@@ -220,12 +220,28 @@
             console.log("访问用户媒体设备失败：",error.name,error.message);
         }
         function onClick( event ) {
+                   var x, y;
+        var mouse = new THREE.Vector2();
 
+                    if ( event.changedTouches ) {
+
+                        x = event.changedTouches[ 0 ].pageX;
+                        y = event.changedTouches[ 0 ].pageY;
+
+                    } else {
+
+                        x = event.clientX;
+                        y = event.clientY;
+
+                    }
+
+                    mouse.x = ( x / window.innerWidth ) * 2 - 1;
+                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;
                   if ( event.touches.length == 1 ) {                   
                     event.preventDefault();                   
-                    var mouse = new THREE.Vector2();
-                    mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
-                    mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
+                    // var mouse = new THREE.Vector2();
+                    // mouse.x = ( event.touches[0].clientX / renderer.domElement.clientWidth ) * 2 - 1;
+                    // mouse.y = - ( event.touches[0].clientY / renderer.domElement.clientHeight ) * 2 + 1;
                     var raycaster = new THREE.Raycaster();
                 raycaster.setFromCamera( mouse, camera );
                 var intersects = raycaster.intersectObjects( scene.children,true);
@@ -248,26 +264,10 @@
 
         }
         function onDocumentMouseDown( event ) {
-        var x, y;
+
         var mouse = new THREE.Vector2();
-
-                    if ( event.changedTouches ) {
-
-                        x = event.changedTouches[ 0 ].pageX;
-                        y = event.changedTouches[ 0 ].pageY;
-
-                    } else {
-
-                        x = event.clientX;
-                        y = event.clientY;
-
-                    }
-
-                    mouse.x = ( x / window.innerWidth ) * 2 - 1;
-                    mouse.y = - ( y / window.innerHeight ) * 2 + 1;
-        
-        // mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
-        // mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
+        mouse.x = ( event.clientX / renderer.domElement.clientWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / renderer.domElement.clientHeight ) * 2 + 1;
 
         var raycaster = new THREE.Raycaster();
         raycaster.setFromCamera( mouse, camera );
