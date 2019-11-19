@@ -30,6 +30,25 @@
 				font-weight: bold;
 			}
 		</style>
+            <button id="btn" onclick="startAnimation()">
+                <!-- 返回 -->
+            </button><style>
+            button{
+                width:100px;
+                height:40px;
+                position: absolute;
+                right: 48%;
+                top: 93%;
+                /*color: white;*/
+                /*background-color: #222222;*/
+                background: transparent;
+                background-image: url('models/fbx/on.png');
+                border: 0px solid white;
+                background-size:100% 100%;
+                overflow:hidden;
+                cursor: pointer;
+            }
+            </style>
         <script >
           
             var mixer;
@@ -101,12 +120,13 @@
                 showProgressBar();
                   // model
                 var loader = new THREE.FBXLoader();
-                loader.load( 'models/fbx/hexie_ani_1118.fbx', function ( object ) {
+                loader.load( 'models/fbx/hexie_ani_1116.fbx', function ( object ) {
 
                     mixer = new THREE.AnimationMixer( object );
                     for(var i = 0 ; i < object.animations.length; i++){           
                           action = mixer.clipAction( object.animations[ i ] );           
                           action.stop(); 
+                          action.reset();
                         //   action.loop = 2200;   
                         //   action.clampWhenFinished = true;                  
                         }
@@ -122,8 +142,9 @@
                         }
 
                     } );
-                    object.scale.set(1,1,1);
+                    object.scale.set(1.5,1.5,1.5);
                     object.position.set(0,0,0);
+                    object.rotation.set(0,Math.PI/2,0);
                     object.name = "train";
                      targetObj = object;
                     scene.add( object );
@@ -182,11 +203,11 @@
             controls.minDistance = 2;
             controls.maxDistance = 200;				
             controls.update();
-            window.addEventListener( 'click', onClick );
-            document.addEventListener('touchstart', onDocumentTouchStart, false);
-            document.addEventListener('touchmove', onDocumentTouchMove, false);
-            document.addEventListener( 'touchend', onDocumentTouchEnd, false );
-            document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+            // window.addEventListener( 'click', onClick );
+            // document.addEventListener('touchstart', onDocumentTouchStart, false);
+            // document.addEventListener('touchmove', onDocumentTouchMove, false);
+            // document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+            // document.addEventListener( 'mousedown', onDocumentMouseDown, false );
             }
 
             //访问用户媒体设备的兼容方法
@@ -326,6 +347,15 @@
                 //     mouseX = event.touches[0].layerX - width/2;
                 //     targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * 0.05;
                 // }
+           }
+           function startAnimation(){
+            if(action!=undefined){
+                    mixer = new THREE.AnimationMixer( targetObj );             
+                    action =mixer.clipAction( targetObj.animations[ 0 ] );    
+                    action.loop = 2200;
+                    action.clampWhenFinished = true; 
+                    action.play(); 
+                }
            }
            function onWindowResize() {
 
