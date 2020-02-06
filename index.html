@@ -30,10 +30,11 @@
 				font-weight: bold;
 			}
 		</style>
-            <button id="btn" onclick="startAnimation()">
+           
+            <image >
                 <!-- 返回 -->
-            </button><style>
-            button{
+            </image><style>
+            image{
                 width:100px;
                 height:34px;
                 position: absolute;
@@ -48,6 +49,7 @@
                 overflow:hidden;
                 cursor: pointer;
             }
+            
             </style>
         <script >
           
@@ -125,12 +127,12 @@
                     mixer = new THREE.AnimationMixer( object );
                     for(var i = 0 ; i < object.animations.length; i++){           
                           action = mixer.clipAction( object.animations[ i ] );           
-                          action.stop(); 
-                          action.reset();
+                          // action.stop(); 
+                          // action.reset();
                         //   action.loop = 2200;   
                         //   action.clampWhenFinished = true;                  
                         }
-                        // mixer.clipAction( object.animations[ 0 ] ).play();
+                        mixer.clipAction( object.animations[ 0 ] ).play();
 
                     object.traverse( function ( child ) {
 
