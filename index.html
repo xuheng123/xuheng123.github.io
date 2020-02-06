@@ -66,7 +66,7 @@
          <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <!-- <div class="text-center" style="position: absolute;left:0%;top:00%"> -->
+        <div class="text-center" style="position: absolute;left:0%;top:00%">
         <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 1080px;height: 1080px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         
@@ -87,7 +87,7 @@
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.shadowMap.enabled = true;
-                renderer.setClearColor('rgb(135,206,250)',1.0)
+                
 				container.appendChild( renderer.domElement );
 
                 window.addEventListener( 'resize', onWindowResize, false );
@@ -116,7 +116,7 @@
 
             var light;
             function initLight() {
-               light = new THREE.HemisphereLight( 0x444444, 0x444444 );
+               light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
                 light.position.set( 0, 0, 0 );
                 scene.add( light );
 
@@ -213,11 +213,11 @@
                 mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
-                renderer.setClearColor('rgb(0,0,0)',1.0)
                 }
                 else{
 
-                    alert('苹果暂不支持摄像头调用！')
+                    renderer.setClearColor('rgb(135,206,250)',1.0)
+                     alert('苹果暂不支持摄像头调用！')
 
                 }
                 
