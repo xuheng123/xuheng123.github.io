@@ -30,12 +30,10 @@
 				font-weight: bold;
 			}
 		</style>
-           
-       
-        <image id="img6">
+              <button id="btn" onclick="EnterBtn()">
                 <!-- 返回 -->
-            </image><style>
-            image{
+            </button><style>
+            button{
                 width:100px;
                 height:34px;
                 position: absolute;
@@ -49,12 +47,29 @@
                 background-size:100% 100%;
                 overflow:hidden;
                 cursor: pointer;
-            } 
-            </style>
-       
+                display:block;
+            }
+
+            </style>   
         <div class="text-center" style="position: absolute;left:47%;top:00%">
-        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:block;cursor:move;position: absolute; ">
+        <div class="m-pic-content m-pic" id="img1" style="background:url(models/fbx/ui/1.png);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
+        <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="m-pic-content m-pic" id="img2" style="background:url(models/fbx/ui/2.png);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        </div>
+        <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="m-pic-content m-pic" id="img3" style="background:url(models/fbx/ui/3.png);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        </div>
+        <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="m-pic-content m-pic" id="img4" style="background:url(models/fbx/ui/4.png);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        </div>
+         <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 540px;height: 753px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        </div>
+        <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 1100px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        </div>
+        
         <script >
           
             var mixer;
@@ -148,59 +163,59 @@
                         }
 
                     } );
-                    object.scale.set(2,2,2);
-                    object.position.set(0,0,0);
-                    object.rotation.set(0,Math.PI/2,0);
+                    object.scale.set(1.5,1.5,1.5);
+                    object.position.set(0,-10,0);
+                    object.rotation.set(0,0,0);
                     object.name = "train";
                      targetObj = object;
                     scene.add( object );
                     hideProgressBar();
                 }, onProgress, onError );
 
-                var video = document.getElementById('video');
-                var vendorUrl = window.URL || window.webkitURL;
-                var texture;
+                // var video = document.getElementById('video');
+                // var vendorUrl = window.URL || window.webkitURL;
+                // var texture;
 
-                navigator.getMedia = navigator.getUserMedia ||
-                                     navigator.webkitGetUserMedia ||
-                                     navigator.mozGetUserMedia ||
-                                     navigator.msGetUserMedia ||
-                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-                if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+                // navigator.getMedia = navigator.getUserMedia ||
+                //                      navigator.webkitGetUserMedia ||
+                //                      navigator.mozGetUserMedia ||
+                //                      navigator.msGetUserMedia ||
+                //                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+                // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
                    
-                    navigator.mediaDevices.getUserMedia({
+                //     navigator.mediaDevices.getUserMedia({
 
-                        'audio':false,
+                //         'audio':false,
 
-                        'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+                //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                    })
+                //     })
 
-                    .then(function(strem) {
-                        try {
-                          video.srcObject = strem;
-                        } catch (error) {
-                          video.src = URL.createObjectURL(strem);
-                        }
-                        video.play();                   
-                    })
+                //     .then(function(strem) {
+                //         try {
+                //           video.srcObject = strem;
+                //         } catch (error) {
+                //           video.src = URL.createObjectURL(strem);
+                //         }
+                //         video.play();                   
+                //     })
 
-                    .catch(function(error) { console.log(666);console.log(error) })
+                //     .catch(function(error) { console.log(666);console.log(error) })
 
-                }
-                else{
+                // }
+                // else{
 
-                    alert('苹果暂不支持摄像头调用！')
+                //     alert('苹果暂不支持摄像头调用！')
 
-                }
-                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-                texture.minFilter = THREE.LinearFilter;
-                texture.magFilter = THREE.LinearFilter;
-                texture.format = THREE.RGBFormat;
+                // }
+                // texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+                // texture.minFilter = THREE.LinearFilter;
+                // texture.magFilter = THREE.LinearFilter;
+                // texture.format = THREE.RGBFormat;
 
-                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-                mesh = new THREE.Mesh(geometry,  material);
-                mesh.position.set(0,0,-240);
+                // material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+                // mesh = new THREE.Mesh(geometry,  material);
+                // mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
 
@@ -404,8 +419,54 @@
 
                 document.body.removeChild( progressBarDiv );
 
+                 var mp3 = "models/fbx/0204.mp3";
+                 var mp3 = new Audio(mp3);
+                        mp3.play();
+                document.getElementById("yun").style.display = "block";
+                window.setTimeout ("yun('none')",1600);       
+                window.setTimeout ("img1('block')",11000);         
+                window.setTimeout ("img1('none')",17000);    
+                window.setTimeout ("img2('block')",17000);         
+                window.setTimeout ("img2('none')",22000); 
+                window.setTimeout ("img3('block')",22000);         
+                window.setTimeout ("img3('none')",26000);   
+                window.setTimeout ("img4('block')",26000);         
+                window.setTimeout ("img4('none')",32000);  
+                window.setTimeout (model,32000); 
+                window.setTimeout ("yun('block')",31000);    
+                window.setTimeout ("yun('none')",31600);  
+                window.setTimeout ("button('block')",32000);  
+                window.setTimeout ("img5('block')",32000);
             }
-
+            function yun(isblock) {
+              document.getElementById('yun').style.backgroundImage = "url(models/fbx/ui/yun.gif)";
+               document.getElementById('img1').src = document.getElementById('img1').src
+              document.getElementById("yun").style.display = isblock;
+            }
+            function img1(isblock) {
+              document.getElementById("img1").style.display = isblock;
+            }
+            function img2(isblock) {
+              document.getElementById("img2").style.display = isblock;
+            }
+            function img3(isblock) {
+              document.getElementById("img3").style.display = isblock;
+            }
+            function img4(isblock) {
+              document.getElementById("img4").style.display = isblock;
+            }
+            function img5(isblock) {
+              document.getElementById("img5").style.display = isblock;
+            }
+            function model(){
+                targetObj.visible = false;
+            }
+            function button(isblock){
+                document.getElementById("btn").style.display = isblock;
+            }
+            function EnterBtn(){
+                
+            }
             function threeStart() {
                 initCamera();
                 initThree();
