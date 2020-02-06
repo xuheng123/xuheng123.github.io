@@ -432,7 +432,7 @@
                                         // 初始化一个加载器,然后加载资源
                 var auLoader=new THREE.AudioLoader();
                 auLoader.load("models/fbx/0204.mp3",function(buffer){
-                    // sound.setBuffer(buffer);// 给一个加载器对象设置音频对象的缓存
+                    sound.setBuffer(buffer);// 给一个加载器对象设置音频对象的缓存
                     sound.play();// 播放音频
                 },function(xhr){// onProgress回调
                     console.log("audio "+(xhr.loaded/xhr.total)*100+" % loaded");
