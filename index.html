@@ -117,7 +117,7 @@
 
             var light;
             function initLight() {
-               light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
+               light = new THREE.HemisphereLight( 0xffffff, 0xffffff ,1.5);
                 light.position.set( 0, 0, 0 );
                 scene.add( light );
 
@@ -128,7 +128,7 @@
                 light.shadow.camera.bottom = - 100;
                 light.shadow.camera.left = - 120;
                 light.shadow.camera.right = 120;
-                scene.add( light );
+                // scene.add( light );
             }
 
 
