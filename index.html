@@ -128,7 +128,7 @@
                 light.shadow.camera.bottom = - 100;
                 light.shadow.camera.left = - 120;
                 light.shadow.camera.right = 120;
-                // scene.add( light );
+                scene.add( light );
             }
 
 
@@ -493,17 +493,21 @@
             function autoPlay(id){ 
             const _audio = document.getElementById(id);
             if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                _audio.loop = false;
                 _audio.play();
             } else {
                 if (document.addEventListener) {
                     document.addEventListener("WeixinJSBridgeReady", function() {
+                        _audio.loop = false;
                         _audio.play();
                     }, false);
                 } else if (document.attachEvent) {
                     document.attachEvent("WeixinJSBridgeReady", function() {
+                        _audio.loop = false;
                         _audio.play();
                     });
                     document.attachEvent("onWeixinJSBridgeReady", function() {
+                        _audio.loop = false;
                         _audio.play();
                     });
                 }
