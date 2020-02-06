@@ -51,22 +51,22 @@
             }
 
             </style>   
-        <div class="text-center" style="position: absolute;left:10%;top:00%">
+        <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img1" style="background:url(models/fbx/ui/1.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:block;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:10%;top:00%">
+        <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img2" style="background:url(models/fbx/ui/2.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:10%;top:00%">
+        <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img3" style="background:url(models/fbx/ui/3.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:10%;top:00%">
+        <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img4" style="background:url(models/fbx/ui/4.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-         <div class="text-center" style="position: absolute;left:10%;top:00%">
+         <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:10%;top:00%">
+        <div class="text-center" style="position: absolute;left:0%;top:00%">
         <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 600px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         
@@ -127,7 +127,7 @@
                 light.shadow.camera.bottom = - 100;
                 light.shadow.camera.left = - 120;
                 light.shadow.camera.right = 120;
-                scene.add( light );
+                // scene.add( light );
             }
 
 
@@ -136,10 +136,6 @@
             var material;
 
             function initObject() {
-                 var mp3 = "models/fbx/0204.mp3";
-                 var mp3 = new Audio(mp3);
-                        mp3.play();
-                        mp3.pause();
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 220, 250);
                 updateProgressBar( 0 );
@@ -177,53 +173,53 @@
                     hideProgressBar();
                 }, onProgress, onError );
 
-                // var video = document.getElementById('video');
-                // var vendorUrl = window.URL || window.webkitURL;
-                // var texture;
+                var video = document.getElementById('video');
+                var vendorUrl = window.URL || window.webkitURL;
+                var texture;
 
-                // navigator.getMedia = navigator.getUserMedia ||
-                //                      navigator.webkitGetUserMedia ||
-                //                      navigator.mozGetUserMedia ||
-                //                      navigator.msGetUserMedia ||
-                //                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-                // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+                navigator.getMedia = navigator.getUserMedia ||
+                                     navigator.webkitGetUserMedia ||
+                                     navigator.mozGetUserMedia ||
+                                     navigator.msGetUserMedia ||
+                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+                if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
                    
-                //     navigator.mediaDevices.getUserMedia({
+                    navigator.mediaDevices.getUserMedia({
 
-                //         'audio':false,
+                        'audio':false,
 
-                //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+                        'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                //     })
+                    })
 
-                //     .then(function(strem) {
-                //         try {
-                //           video.srcObject = strem;
-                //         } catch (error) {
-                //           video.src = URL.createObjectURL(strem);
-                //         }
-                //         video.play();                   
-                //     })
+                    .then(function(strem) {
+                        try {
+                          video.srcObject = strem;
+                        } catch (error) {
+                          video.src = URL.createObjectURL(strem);
+                        }
+                        video.play();                   
+                    })
 
-                //     .catch(function(error) { console.log(666);console.log(error) })
+                    .catch(function(error) { console.log(666);console.log(error) })
 
-                // texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-                // texture.minFilter = THREE.LinearFilter;
-                // texture.magFilter = THREE.LinearFilter;
-                // texture.format = THREE.RGBFormat;
+                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+                texture.minFilter = THREE.LinearFilter;
+                texture.magFilter = THREE.LinearFilter;
+                texture.format = THREE.RGBFormat;
 
-                // material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-                // mesh = new THREE.Mesh(geometry,  material);
-                // mesh.position.set(0,0,-240);
-                // scene.add(camera);
-                // camera.add(mesh);
+                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+                mesh = new THREE.Mesh(geometry,  material);
+                mesh.position.set(0,0,-240);
+                scene.add(camera);
+                camera.add(mesh);
 
-                // }
-                // else{
+                }
+                else{
 
-                //     alert('苹果暂不支持摄像头调用！')
+                    alert('苹果暂不支持摄像头调用！')
 
-                // }
+                }
                 
 
             // Controls
@@ -426,9 +422,25 @@
 
                 document.body.removeChild( progressBarDiv );
 
-                 var mp3 = "models/fbx/0204.mp3";
-                 var mp3 = new Audio(mp3);
-                        mp3.play();
+                 // var mp3 = "models/fbx/0204.mp3";
+                 // var mp3 = new Audio(mp3);
+                 //        mp3.play();
+                 var listener=new THREE.AudioListener();
+                camera.add(listener);// 把监听添加到camera
+                
+                // 初始化音频对象,并加入监听
+                var sound=new THREE.Audio(listener);
+                                        // 初始化一个加载器,然后加载资源
+                var auLoader=new THREE.AudioLoader();
+                auLoader.load("models/fbx/0204.mp3",function(buffer){
+                    sound.setBuffer(buffer);// 给一个加载器对象设置音频对象的缓存
+                    sound.play();// 播放音频
+                },function(xhr){// onProgress回调
+                    console.log("audio "+(xhr.loaded/xhr.total)*100+" % loaded");
+                },function(error){// onError回调
+                    console.error("an error happened !");
+                });
+
                 document.getElementById("yun").style.display = "block";
                 window.setTimeout ("yun('none')",1600);       
                 window.setTimeout ("img1('block')",11000);         
