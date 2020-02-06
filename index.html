@@ -491,15 +491,23 @@
                 
             }
             function autoPlay(id){ 
-            var audio = document.getElementById(id); 
-             audio.load(); 
-             audio.play(); 
-            document.addEventListener("WeixinJSBridgeReady", function () { 
-            audio.play(); 
-            }, false); 
-            // document.addEventListener('YixinJSBridgeReady', function() { 
-            // audio.play(); 
-            // }, false); 
+            const _audio = document.getElementById(id);
+            if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                _audio.play();
+            } else {
+                if (document.addEventListener) {
+                    document.addEventListener("WeixinJSBridgeReady", function() {
+                        _audio.play();
+                    }, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent("WeixinJSBridgeReady", function() {
+                        _audio.play();
+                    });
+                    document.attachEvent("onWeixinJSBridgeReady", function() {
+                        _audio.play();
+                    });
+                }
+            }
             } 
             function threeStart() {
                 initCamera();
