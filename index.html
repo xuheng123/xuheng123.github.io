@@ -66,8 +66,8 @@
          <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:0%;top:00%">
-        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 1080px;height: 1080px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        <div class="text-center" style="position: absolute;left:15%;top:00%">
+        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         
         <script >
@@ -213,12 +213,6 @@
                 mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
-                // Controls
-                controls = new THREE.OrbitControls( camera, renderer.domElement );
-                controls.minDistance = 2;
-                controls.maxDistance = 200;             
-                controls.update();
-
                 }
                 else{
 
@@ -226,7 +220,11 @@
 
                 }
                 
-
+// Controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement );
+                controls.minDistance = 2;
+                controls.maxDistance = 200;             
+                controls.update();
             
             // window.addEventListener( 'click', onClick );
             // document.addEventListener('touchstart', onDocumentTouchStart, false);
@@ -434,7 +432,7 @@
                                         // 初始化一个加载器,然后加载资源
                 var auLoader=new THREE.AudioLoader();
                 auLoader.load("models/fbx/0204.mp3",function(buffer){
-                    sound.setBuffer(buffer);// 给一个加载器对象设置音频对象的缓存
+                    // sound.setBuffer(buffer);// 给一个加载器对象设置音频对象的缓存
                     sound.play();// 播放音频
                 },function(xhr){// onProgress回调
                     console.log("audio "+(xhr.loaded/xhr.total)*100+" % loaded");
@@ -443,7 +441,7 @@
                 });
 
                 document.getElementById("yun").style.display = "block";
-                window.setTimeout ("yun('none')",1600);       
+                window.setTimeout ("yun('none')",1200);       
                 window.setTimeout ("img1('block')",11000);         
                 window.setTimeout ("img1('none')",17000);    
                 window.setTimeout ("img2('block')",17000);         
