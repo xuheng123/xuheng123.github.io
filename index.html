@@ -71,6 +71,7 @@
         <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 520px;height: 960px;background-repeat: no-repeat;display:block;cursor:move;position: absolute; ">
         </div>
         <audio id="music" class="media-audio" src="models/fbx/0204.mp3" preload loop="-1"></audio >
+        <audio id="bgm" class="media-audio" src="models/fbx/bgm.mp3" preload loop="-1"></audio >
         <script >
           
             var mixer;
@@ -443,7 +444,8 @@
                 // },function(error){// onError回调
                 //     console.error("an error happened !");
                 // });
-                autoPlay('music');
+                autoPlay('music',false);
+                autoPlay('bgm',true);
 
                 document.getElementById("yun").style.display = "block";
                 window.setTimeout ("yun('none')",1000);       
@@ -490,24 +492,24 @@
             function EnterBtn(){
                 
             }
-            function autoPlay(id){ 
+            function autoPlay(id,isloop){ 
             const _audio = document.getElementById(id);
             if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
-                _audio.loop = false;
+                _audio.loop = isloop;
                 _audio.play();
             } else {
                 if (document.addEventListener) {
                     document.addEventListener("WeixinJSBridgeReady", function() {
-                        _audio.loop = false;
+                        _audio.loop = isloop;
                         _audio.play();
                     }, false);
                 } else if (document.attachEvent) {
                     document.attachEvent("WeixinJSBridgeReady", function() {
-                        _audio.loop = false;
+                        _audio.loop = isloop;
                         _audio.play();
                     });
                     document.attachEvent("onWeixinJSBridgeReady", function() {
-                        _audio.loop = false;
+                        _audio.loop = isloop;
                         _audio.play();
                     });
                 }
