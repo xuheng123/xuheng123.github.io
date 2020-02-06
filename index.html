@@ -127,7 +127,7 @@
                 light.shadow.camera.bottom = - 100;
                 light.shadow.camera.left = - 120;
                 light.shadow.camera.right = 120;
-                scene.add( light );
+                // scene.add( light );
             }
 
 
@@ -213,6 +213,7 @@
                 mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
+                renderer.setClearColor('rgb(0,0,0)',1.0)
                 }
                 else{
 
