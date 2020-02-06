@@ -47,11 +47,11 @@
                 background-size:100% 100%;
                 overflow:hidden;
                 cursor: pointer;
-                display:block;
+                display:none;
             }
 
             </style>   
-        <div class="text-center" style="position: absolute;left:47%;top:00%">
+        <div class="text-center" style="position: absolute;left:0%;top:00%">
         <div class="m-pic-content m-pic" id="img1" style="background:url(models/fbx/ui/1.png);background-size: contain;width: 540px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         <div class="text-center" style="position: absolute;left:47%;top:00%">
@@ -203,12 +203,6 @@
 
                     .catch(function(error) { console.log(666);console.log(error) })
 
-                }
-                else{
-
-                    alert('苹果暂不支持摄像头调用！')
-
-                }
                 texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
                 texture.minFilter = THREE.LinearFilter;
                 texture.magFilter = THREE.LinearFilter;
@@ -219,6 +213,14 @@
                 mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
+
+                }
+                else{
+
+                    alert('苹果暂不支持摄像头调用！')
+
+                }
+                
 
             // Controls
             controls = new THREE.OrbitControls( camera, renderer.domElement );
