@@ -136,6 +136,10 @@
             var material;
 
             function initObject() {
+                 var mp3 = "models/fbx/0204.mp3";
+                 var mp3 = new Audio(mp3);
+                        mp3.play();
+                        mp3.pause();
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 220, 250);
                 updateProgressBar( 0 );
