@@ -8,6 +8,7 @@
         <script src="js/libs/inflate.min.js"></script>
         <script src="js/loaders/FBXLoader.js"></script>
         <script src="js/controls/OrbitControls.js"></script>  
+         <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
         <style>
 			body {
 				font-family: Monospace;
@@ -489,13 +490,13 @@
             }
             function autoPlay(id){ 
             var audio = document.getElementById(id); 
-            audio.play(); 
+             audio.play(); 
             document.addEventListener("WeixinJSBridgeReady", function () { 
             audio.play(); 
             }, false); 
-            document.addEventListener('YixinJSBridgeReady', function() { 
-            audio.play(); 
-            }, false); 
+            // document.addEventListener('YixinJSBridgeReady', function() { 
+            // audio.play(); 
+            // }, false); 
             } 
             function threeStart() {
                 initCamera();
