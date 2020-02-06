@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <title>火车AR展示</title>
+        <title>AR展示</title>
         <script src="build/three.js"></script>
         <script src="js/libs/inflate.min.js"></script>
         <script src="js/loaders/FBXLoader.js"></script>
@@ -67,7 +67,7 @@
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         <div class="text-center" style="position: absolute;left:-10%;top:00%">
-        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 600px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 1080px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         
         <script >
@@ -213,6 +213,11 @@
                 mesh.position.set(0,0,-240);
                 scene.add(camera);
                 camera.add(mesh);
+                // Controls
+                controls = new THREE.OrbitControls( camera, renderer.domElement );
+                controls.minDistance = 2;
+                controls.maxDistance = 200;             
+                controls.update();
 
                 }
                 else{
@@ -222,11 +227,7 @@
                 }
                 
 
-            // Controls
-            controls = new THREE.OrbitControls( camera, renderer.domElement );
-            controls.minDistance = 2;
-            controls.maxDistance = 200;				
-            controls.update();
+            
             // window.addEventListener( 'click', onClick );
             // document.addEventListener('touchstart', onDocumentTouchStart, false);
             // document.addEventListener('touchmove', onDocumentTouchMove, false);
