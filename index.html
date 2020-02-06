@@ -68,7 +68,7 @@
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         <div class="text-center" style="position: absolute;left:15%;top:00%">
-        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
+        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 520px;height: 960px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         <audio id="music" class="media-audio" src="models/fbx/0204.mp3" preload loop="-1"></audio >
         <script >
@@ -446,7 +446,7 @@
                 autoPlay('music');
 
                 document.getElementById("yun").style.display = "block";
-                window.setTimeout ("yun('none')",800);       
+                window.setTimeout ("yun('none')",1000);       
                 window.setTimeout ("img1('block')",11000);         
                 window.setTimeout ("img1('none')",17000);    
                 window.setTimeout ("img2('block')",17000);         
@@ -457,7 +457,7 @@
                 window.setTimeout ("img4('none')",32000);  
                 window.setTimeout (model,32000); 
                 window.setTimeout ("yun('block')",31000);    
-                window.setTimeout ("yun('none')",31600);  
+                window.setTimeout ("yun('none')",31700);  
                 window.setTimeout ("button('block')",32000);  
                 window.setTimeout ("img5('block')",32000);
             }
