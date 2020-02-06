@@ -70,7 +70,7 @@
         <div class="text-center" style="position: absolute;left:0%;top:00%">
         <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 1080px;height: 1080px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <audio id="music" class="media-audio" src="models/fbx/0204.mp3" preload loop=""></audio >
+        <audio id="music" class="media-audio" src="models/fbx/0204.mp3" preload loop="-1"></audio >
         <script >
           
             var mixer;
@@ -137,8 +137,8 @@
             var material;
 
             function initObject() {
-                 var audio = document.getElementById('music'); 
-                 audio.load(); 
+                 // var audio = document.getElementById('music'); 
+                 // audio.load(); 
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 220, 250);
                 updateProgressBar( 0 );
