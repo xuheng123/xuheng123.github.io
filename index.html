@@ -490,6 +490,7 @@
             }
             function autoPlay(id){ 
             var audio = document.getElementById(id); 
+             audio.load(); 
              audio.play(); 
             document.addEventListener("WeixinJSBridgeReady", function () { 
             audio.play(); 
