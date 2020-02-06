@@ -66,7 +66,7 @@
          <div class="text-center" style="position: absolute;left:15%;top:00%">
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
-        <div class="text-center" style="position: absolute;left:15%;top:00%">
+        <div class="text-center" style="position: absolute;left:0%;top:00%">
         <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         
@@ -117,7 +117,7 @@
             var light;
             function initLight() {
                light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-                light.position.set( 0, 200, 0 );
+                light.position.set( 0, 0, 0 );
                 scene.add( light );
 
                 // light = new THREE.DirectionalLight( 0xffffff );
@@ -441,7 +441,7 @@
                 });
 
                 document.getElementById("yun").style.display = "block";
-                window.setTimeout ("yun('none')",1200);       
+                window.setTimeout ("yun('none')",1300);       
                 window.setTimeout ("img1('block')",11000);         
                 window.setTimeout ("img1('none')",17000);    
                 window.setTimeout ("img2('block')",17000);         
