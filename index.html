@@ -137,6 +137,8 @@
             var material;
 
             function initObject() {
+                 var audio = document.getElementById('music'); 
+                 audio.load(); 
                 scene = new THREE.Scene();
                 geometry = new THREE.PlaneGeometry( 220, 250);
                 updateProgressBar( 0 );
@@ -174,53 +176,53 @@
                     hideProgressBar();
                 }, onProgress, onError );
 
-                // var video = document.getElementById('video');
-                // var vendorUrl = window.URL || window.webkitURL;
-                // var texture;
+                var video = document.getElementById('video');
+                var vendorUrl = window.URL || window.webkitURL;
+                var texture;
 
-                // navigator.getMedia = navigator.getUserMedia ||
-                //                      navigator.webkitGetUserMedia ||
-                //                      navigator.mozGetUserMedia ||
-                //                      navigator.msGetUserMedia ||
-                //                      (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-                // if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
+                navigator.getMedia = navigator.getUserMedia ||
+                                     navigator.webkitGetUserMedia ||
+                                     navigator.mozGetUserMedia ||
+                                     navigator.msGetUserMedia ||
+                                     (navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+                if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){
                    
-                //     navigator.mediaDevices.getUserMedia({
+                    navigator.mediaDevices.getUserMedia({
 
-                //         'audio':false,
+                        'audio':false,
 
-                //         'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
+                        'video':{ 'facingMode': "environment" }//调用前置摄像头，后置摄像头使用video: { facingMode: { exact: "environment" } }user
 
-                //     })
+                    })
 
-                //     .then(function(strem) {
-                //         try {
-                //           video.srcObject = strem;
-                //         } catch (error) {
-                //           video.src = URL.createObjectURL(strem);
-                //         }
-                //         video.play();                   
-                //     })
+                    .then(function(strem) {
+                        try {
+                          video.srcObject = strem;
+                        } catch (error) {
+                          video.src = URL.createObjectURL(strem);
+                        }
+                        video.play();                   
+                    })
 
-                //     .catch(function(error) { console.log(666);console.log(error) })
+                    .catch(function(error) { console.log(666);console.log(error) })
 
-                // texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
-                // texture.minFilter = THREE.LinearFilter;
-                // texture.magFilter = THREE.LinearFilter;
-                // texture.format = THREE.RGBFormat;
+                texture = new THREE.VideoTexture( video );//可以直接把视频设为材质
+                texture.minFilter = THREE.LinearFilter;
+                texture.magFilter = THREE.LinearFilter;
+                texture.format = THREE.RGBFormat;
 
-                // material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
-                // mesh = new THREE.Mesh(geometry,  material);
-                // mesh.position.set(0,0,-240);
-                // scene.add(camera);
-                // camera.add(mesh);
-                // }
-                // else{
+                material = new THREE.MeshPhongMaterial( { map: texture , side: THREE.DoubleSide} );
+                mesh = new THREE.Mesh(geometry,  material);
+                mesh.position.set(0,0,-240);
+                scene.add(camera);
+                camera.add(mesh);
+                }
+                else{
 
-                //     renderer.setClearColor('rgb(135,206,250)',1.0)
-                //      alert('苹果暂不支持摄像头调用！')
+                    renderer.setClearColor('rgb(135,206,250)',1.0)
+                     alert('苹果暂不支持摄像头调用！')
 
-                // }
+                }
                 
 // Controls
                 controls = new THREE.OrbitControls( camera, renderer.domElement );
