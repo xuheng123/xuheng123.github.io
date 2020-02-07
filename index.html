@@ -68,7 +68,7 @@
         <div class="m-pic-content m-pic" id="img5" style="background:url(models/fbx/ui/5.png);background-size: contain;width: 260px;height: 480px;background-repeat: no-repeat;display:none;cursor:move;position: absolute; ">
         </div>
         <div class="text-center" style="position: absolute;left:00%;top:00%">
-        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 400px;height: 800px;background-repeat: no-repeat;display:none;cursor:move;position: absolute;margin-left:-65px; ">
+        <div class="m-pic-content m-pic" id="yun" style="background:url(models/fbx/ui/yun.gif);background-size: contain;width: 400px;height: 800px;background-repeat: no-repeat;display:none;cursor:move;position: absolute;margin-left:-50px; ">
         </div>
         <audio id="music" class="media-audio" src="models/fbx/0204.mp3" preload loop="-1"></audio >
         <audio id="bgm" class="media-audio" src="models/fbx/bgm.mp3" preload loop="-1"></audio >
@@ -449,7 +449,8 @@
 
                 document.getElementById("yun").style.display = "block";
                 window.setTimeout ("yun('none')",1000);       
-                window.setTimeout ("img1('block')",11000);         
+                window.setTimeout ("img1('block')",11000);      
+                window.setTimeout (ModelScale,11000);   
                 window.setTimeout ("img1('none')",17000);    
                 window.setTimeout ("img2('block')",17000);         
                 window.setTimeout ("img2('none')",22000); 
@@ -488,6 +489,10 @@
             }
             function button(isblock){
                 document.getElementById("btn").style.display = isblock;
+            }
+            function ModelScale(){
+                targetObj.scale.set(0.5,0.5,0.5);
+                targetObj.position.set(50,-50,0);
             }
             function EnterBtn(){
                 
